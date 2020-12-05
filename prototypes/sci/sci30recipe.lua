@@ -7,7 +7,7 @@ function momoTweak.require.Sci30Recipe()
 		
 		bobmods.lib.recipe.add_ingredient("more-science-pack-5", {ele.circuit[1], 2})
 	
-		bobmods.lib.recipe.add_ingredient("more-science-pack-6", {"solder-alloy", 9})
+		bobmods.lib.recipe.add_ingredient("more-science-pack-6", {"angels-solder-mixture", 9})
 		
 		bobmods.lib.recipe.add_ingredient("more-science-pack-7", {"plate-pack-1", 1})
 		
@@ -28,7 +28,7 @@ function momoTweak.require.Sci30Recipe()
 			bobmods.lib.recipe.add_ingredient("more-science-pack-19", {"clay-brick", 40})
 		end
 		
-		bobmods.lib.recipe.add_ingredient("more-science-pack-12", {"mixing-furnace", 1})
+		bobmods.lib.recipe.add_ingredient("more-science-pack-12", {"stone-mixing-furnace", 1})
 		
 		bobmods.lib.recipe.add_ingredient("more-science-pack-13", {"zinc-plate", 12})
 		bobmods.lib.recipe.add_ingredient("more-science-pack-14", {"zinc-plate", 5})

@@ -10,7 +10,7 @@ function momoTweak.require.RecipeModule()
 
 
 	local mem_a = "copper_plate"
-	local mem_a_3 = {"solder-alloy", 12}
+	local mem_a_3 = {"angels-solder-mixture", 12}
 
 	if momoTweak.settings.isEletronics then
 		if (data.raw.item[ele.memory.a]) then
@@ -40,7 +40,7 @@ function momoTweak.require.RecipeModule()
 
 	bobmods.lib.recipe.remove_ingredient(moduleBoard.b, "gold-plate")
 	bobmods.lib.recipe.add_ingredient(moduleBoard.b, {"silver-plate", 8})
-	bobmods.lib.recipe.add_ingredient(moduleBoard.b, {"solder-alloy", 8})
+	bobmods.lib.recipe.add_ingredient(moduleBoard.b, {"angels-solder-mixture", 8})
 
 	--module-processor-board-3
 	momoTweak.replace_with_ingredient(moduleBoard.c, "fibreglass-board", {ele.unit[4], 4})

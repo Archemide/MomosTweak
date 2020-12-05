@@ -90,8 +90,8 @@ if settings.startup["momo-enable-progress-furnace"].value then
     {"stone-furnace", 1}, {"steel-plate", 6}, {"stone-brick", 5}
   })
   
-  momoTweak.set_all_ingredient("mixing-steel-furnace", {
-    {"mixing-furnace", 1}, {"steel-plate", 6}, {"stone-brick", 5}
+  momoTweak.set_all_ingredient("steel-mixing-furnace", {
+    {"stone-mixing-furnace", 1}, {"steel-plate", 6}, {"stone-brick", 5}
   })
   
   momoTweak.set_all_ingredient("chemical-steel-furnace", {
@@ -104,11 +104,11 @@ if settings.startup["momo-enable-progress-furnace"].value then
    bobmods.lib.recipe.add_ingredient("angels-chemical-furnace", {"chemical-boiler", 4})
    bobmods.lib.recipe.add_ingredient("angels-chemical-furnace-2", {"chemical-steel-furnace", 1})
    
-   bobmods.lib.recipe.add_ingredient("ore-processing-machine", {"mixing-furnace", 4})
-   bobmods.lib.recipe.add_ingredient("ore-processing-machine-2", {"mixing-steel-furnace", 1})
+   bobmods.lib.recipe.add_ingredient("ore-processing-machine", {"stone-mixing-furnace", 4})
+   bobmods.lib.recipe.add_ingredient("ore-processing-machine-2", {"steel-mixing-furnace", 1})
    
-   bobmods.lib.recipe.add_ingredient("pellet-press", {"mixing-furnace", 4})
-   bobmods.lib.recipe.add_ingredient("pellet-press-2", {"mixing-steel-furnace", 1})
+   bobmods.lib.recipe.add_ingredient("pellet-press", {"stone-mixing-furnace", 4})
+   bobmods.lib.recipe.add_ingredient("pellet-press-2", {"steel-mixing-furnace", 1})
 end
 
 if settings.startup["momo-enable-bob-extend-engine"].value then

@@ -1,5 +1,5 @@
 function momoTweak.set_amount_ingredient(recipeName, item)
-  local itemcasting = bobmods.lib.item.basic_item(item)
+  local itemcasting = bobmods.lib.item.ingredient_simple(item)
   bobmods.lib.recipe.remove_ingredient(recipeName, itemcasting.name)
   bobmods.lib.recipe.add_ingredient(recipeName, item)
 end
@@ -14,7 +14,7 @@ function momoTweak.multiple_amount_ingredient(recipeName, itemName, multiply)
   -- check for straing 
   if data.raw.recipe[recipeName].ingredients then
     for i, ingredient in pairs(data.raw.recipe[recipeName].ingredients) do
-      local item = bobmods.lib.item.basic_item(ingredient)
+      local item = bobmods.lib.item.ingredient_simple(ingredient)
           if item.name == itemName then
             oldValue = item.amount
           end
@@ -22,7 +22,7 @@ function momoTweak.multiple_amount_ingredient(recipeName, itemName, multiply)
   else
   -- if get difficult
     for i, ingredient in pairs(data.raw.recipe[recipeName].normal.ingredients) do
-      local item = bobmods.lib.item.basic_item(ingredient)
+      local item = bobmods.lib.item.ingredient_simple(ingredient)
           if item.name == itemName then
             oldValue = item.amount
           end
@@ -57,7 +57,7 @@ function momoTweak.find_recipe_from_ingredient(ingredient)
 		if recipe.ingredients then
 			for j, ing in pairs(recipe.ingredients) do
 				local item = {}
-				if ing then item = bobmods.lib.item.basic_item(ing) else item.name = "__" end
+				if ing then item = bobmods.lib.item.ingredient_simple(ing) else item.name = "__" end
 				if  item.name == ingredient then
 					log("MTKL Recipe finder : contain ".. ingredient .. " => " .. recipe.name)
 					momoTweak.logRecipe(recipe.name)
@@ -74,7 +74,7 @@ function momoTweak.find_recipe_from_result(result)
 		if results then
 			for j, res in pairs(results) do
 				local item = {}
-				if res then item = bobmods.lib.item.basic_item(res) else item.name = "__" end
+				if res then item = bobmods.lib.item.ingredient_simple(res) else item.name = "__" end
 				if item.name == result then
 					log("MTKL Recipe finder : contain ".. result .. " => " .. recipe.name)
 					momoTweak.logRecipe(recipe.name)
@@ -95,7 +95,7 @@ function momoTweak.logRecipe(recipe)
 		if recipe.ingredients then 
 			log("[Ingredients]")
 			for i, ing in pairs(recipe.ingredients) do
-				local item = bobmods.lib.item.basic_item(ing)
+				local item = bobmods.lib.item.ingredient_simple(ing)
 				log("|" .. i .. "| " .. item.name .. " " .. item.amount)
 			end
 		end
@@ -110,7 +110,7 @@ end
 function momoTweak.convert_results(recipePro) 
 	local results = {}
 	if recipePro.result then
-		table.insert(results, bobmods.lib.item.basic_item({recipePro.result, recipePro.result_count}))
+		table.insert(results, bobmods.lib.item.ingredient_simple({recipePro.result, recipePro.result_count}))
 		return results
 	end
 	
@@ -120,7 +120,7 @@ function momoTweak.convert_results(recipePro)
 	
 	if recipePro.normal then
 		if recipePro.normal.result then
-			table.insert(results, bobmods.lib.item.basic_item({recipePro.normal.result, recipePro.normal.result_count}))
+			table.insert(results, bobmods.lib.item.ingredient_simple({recipePro.normal.result, recipePro.normal.result_count}))
 			return results
 		end
 		
@@ -136,7 +136,7 @@ function momoTweak.get_result_amount(recipe)
 end
 
 function momoTweak.genRecipeNameFromResult(result)
-	local item = bobmods.lib.item.basic_item(result)
+	local item = bobmods.lib.item.ingredient_simple(result)
 	return "momo-" .. item.name .. "-N" .. item.amount
 end
 
@@ -174,7 +174,7 @@ function momoTweak.assign_ingredients(recipe, ingredients)
 end
 
 function momoTweak.createRecipe(cat ,results, ingredients, energy, tech, extraname)
-  local result = bobmods.lib.item.basic_item(results[1])
+  local result = bobmods.lib.item.ingredient_simple(results[1])
   local namegen = momoTweak.genRecipeNameFromResult(result)
   local enabled = "false"
   if tech == true then

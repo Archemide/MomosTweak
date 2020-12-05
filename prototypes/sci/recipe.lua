@@ -67,7 +67,7 @@ function momoTweak.require.SciRecipe()
 		{"lead-plate", 4},
 		{"glass", 4},
 		{"battery", 2},
-	  }, 8, "mixing-steel-furnace")
+	  }, 8, "steel-mixing-furnace")
 
 	local tech_sci_mil = momoTweak.get_tech_of_recipe(momoTweak.sciGun)
 	momoTweak.createRecipe(sci_cat, {{"pre-dark-sci", 2}},

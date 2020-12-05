@@ -63,7 +63,7 @@ data:extend({{
   	type = "custom-input",
   	name = "momo-debug",
   	key_sequence =  "CONTROL + SHIFT + F2",
-  	consuming = "script-only"
+	consuming = "none"
 }})
 
 function momoTweak.GetScienceCraftingCategory()
