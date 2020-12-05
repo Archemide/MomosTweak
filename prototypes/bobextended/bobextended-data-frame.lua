@@ -4,7 +4,7 @@ function momoTweak.require.ExtendedDataFrame()
 	  data:extend({
 	  { type = "item",
 		name = name.."-structure-components",
-		icon = "__MomoTweak__/graphics/" .. name .. "SC.png",
+		icon = "__MomosTweak__/graphics/" .. name .. "SC.png",
 		subgroup = "structurecomponents",
 		order = "a-" .. string.char(order),
 		stack_size = 50,

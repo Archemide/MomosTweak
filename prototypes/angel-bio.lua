@@ -38,7 +38,7 @@ product.swamp =  {"swamp-1",     "swamp-2",     "swamp-3",     "swamp-4",     "s
 local biome = {"temp", "swamp", "desert"}
 
 function momoTweak.angelBio.Data()
-	local ICON = "__MomoTweak__/graphics/icons/"
+	local ICON = "__MomosTweak__/graphics/icons/"
 	local count = 0
 	local function AddBioItem(Name)
 		data:extend({{

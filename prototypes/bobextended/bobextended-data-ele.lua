@@ -19,7 +19,7 @@ function momoTweak.require.ExtendedDataElectronics()
 		order= "e-a2"
 	}})
 
-	local ICON = "__MomoTweak__/graphics/icons/electronics/"
+	local ICON = "__MomosTweak__/graphics/icons/electronics/"
 	local subgroup = "momo-electronics-1"
 
 	momoTweak.elePrefix = "momo-electronics-"

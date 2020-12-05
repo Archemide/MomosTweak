@@ -36,7 +36,7 @@ function momoTweak.require.ExtendedDataBelt()
 			{
 				type = "item",
 				  name = name,
-				  icon = "__MomoTweak__/graphics/"..class.."-underground-belt.png",
+				  icon = "__MomosTweak__/graphics/"..class.."-underground-belt.png",
 				  icon_size = 32,
 				  subgroup = "momo-longer-belt",
 				  order = "f[" .. name .. "]",
@@ -46,7 +46,7 @@ function momoTweak.require.ExtendedDataBelt()
 			{
 			type = "underground-belt",
 			name = name,
-			icon = "__MomoTweak__/graphics/"..class.."-underground-belt.png",
+			icon = "__MomosTweak__/graphics/"..class.."-underground-belt.png",
 			icon_size=32,
 			speed = bobmods.logistics.belt_speed(1),
 			flags = {"placeable-neutral", "player-creation"},
@@ -94,7 +94,7 @@ function momoTweak.require.ExtendedDataBelt()
 			{
 			  direction_in = {
 				sheet = {
-				  filename = "__MomoTweak__/graphics/entity/"..class.."-underground-belt-structure.png",
+				  filename = "__MomosTweak__/graphics/entity/"..class.."-underground-belt-structure.png",
 				  priority = "extra-high",
 				  width = 96,
 				  height = 96,
@@ -102,14 +102,14 @@ function momoTweak.require.ExtendedDataBelt()
 				} },
 			  direction_out = {
 				sheet = {
-				  filename = "__MomoTweak__/graphics/entity/"..class.."-underground-belt-structure.png",
+				  filename = "__MomosTweak__/graphics/entity/"..class.."-underground-belt-structure.png",
 				  priority = "extra-high",
 				  width = 96,
 				  height = 96,
 				} },
 			  direction_in_side_loading = {
 				sheet = {
-				  filename = "__MomoTweak__/graphics/entity/"..class.."-underground-belt-structure.png",
+				  filename = "__MomosTweak__/graphics/entity/"..class.."-underground-belt-structure.png",
 				  priority = "extra-high",
 				  width = 96,
 				  height = 96,
@@ -117,7 +117,7 @@ function momoTweak.require.ExtendedDataBelt()
 				} },
 			  direction_out_side_loading = {
 				sheet = {
-				  filename = "__MomoTweak__/graphics/entity/"..class.."-underground-belt-structure.png",
+				  filename = "__MomosTweak__/graphics/entity/"..class.."-underground-belt-structure.png",
 				  priority = "extra-high",
 				  width = 96,
 				  height = 96,

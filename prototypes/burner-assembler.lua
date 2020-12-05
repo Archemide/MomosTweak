@@ -2,7 +2,7 @@
     {
       type = "assembling-machine",
       name = momoTweak.burner,
-      icon = "__MomoTweak__/graphics/icons/burner-assembling-machine.png",
+      icon = "__MomosTweak__/graphics/icons/burner-assembling-machine.png",
       icon_size = 32,
       flags = {"placeable-neutral", "placeable-player", "player-creation"},
       minable = {hardness = 0.25, mining_time = 0.5, result = momoTweak.burner},
@@ -112,7 +112,7 @@
     {
       type = "item",
       name = momoTweak.burner,
-      icon = "__MomoTweak__/graphics/icons/burner-assembling-machine.png",
+      icon = "__MomosTweak__/graphics/icons/burner-assembling-machine.png",
       icon_size = 32,
       subgroup = data.raw.item["assembling-machine-1"].subgroup,
       order = "a[momoTweak.burner]",

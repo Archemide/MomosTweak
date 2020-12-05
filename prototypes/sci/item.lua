@@ -11,7 +11,7 @@ data:extend({
 })
 
 local subgroup = "momo-science-materials"
-local ICON = "__MomoTweak__/graphics/icons/"
+local ICON = "__MomosTweak__/graphics/icons/"
 
 function momoTweak.newsciItem(Name) 
   data:extend({

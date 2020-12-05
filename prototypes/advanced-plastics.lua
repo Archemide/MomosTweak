@@ -1,4 +1,4 @@
-local ICON = "__MomoTweak__/graphics/icons/"
+local ICON = "__MomosTweak__/graphics/icons/"
 local subgroup = data.raw.item["iron-stick"].subgroup
 local name = "advanced-plastics"
 local expectResult = {"advanced-plastics", 1}

@@ -23,7 +23,7 @@ require("function.item")
 require("function.recipe")
 require("function.technology")
 momoIRTweak.Init("AB")
-momoIRTweak.InitItemsLib("__MomoTweak__/graphics/icons/", false)
+momoIRTweak.InitItemsLib("__MomosTweak__/graphics/icons/", false)
 
 require("function")
 require("const-name")
