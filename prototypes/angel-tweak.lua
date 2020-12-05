@@ -45,8 +45,6 @@ function momoTweak.angelChemPlanTweak()
 	
 	if data.raw.item["valve-return"] then
 		bobmods.lib.recipe.replace_ingredient("angels-chemical-plant", "pipe", "valve-return")
-	elseif data.raw.item["bob-valve"] then
-		bobmods.lib.recipe.replace_ingredient("angels-chemical-plant", "pipe", "bob-valve")
 	end
 end
 
