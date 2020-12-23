@@ -82,7 +82,7 @@ function momoTweak.require.ExtendedDataBelt()
 				percent = 30
 			  }
 			},
-			collision_box = {{-0.4, -0.15}, {0.4, 0.1}},
+			collision_box = {{-0.4, -0.4}, {0.4, 0.4}},
 			selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
 			distance_to_enter = 0.5,
 			animation_speed_coefficient = 32,
