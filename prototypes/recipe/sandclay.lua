@@ -62,6 +62,14 @@ if data.raw["assembling-machine"]["washing-plant"] then
 		 icon_size = 32
 	}})
 	bobmods.lib.tech.add_recipe_unlock("water-washing-1", "momo-mud-sand")
+
+	local limestoneSandCategory = "ore-sorting-t1"
+	if data.raw["recipe-category"] ~= nil then
+		if data.raw["recipe-category"][ "ore-refining-t1"] ~= nil then
+			limestoneSandCategory = "ore-refining-t1"
+		end
+	end
+
 	data:extend({{
 		 type = "recipe",
 		 name = "momo-limestone-sand",
@@ -70,7 +78,7 @@ if data.raw["assembling-machine"]["washing-plant"] then
 		 subgroup = "ore-processing-a",
 		 order = "zzzz",
 		 energy_required =1.5,
-		 category = "ore-sorting-t1",
+		 category = limestoneSandCategory,
 		 ingredients = {
 			{type="item", name="solid-limestone", amount=1}
 		 },
