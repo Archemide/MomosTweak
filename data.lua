@@ -29,6 +29,13 @@ require("function")
 require("const-name")
 -- still dont support py yet
 -- require("pycom.init")
+
+-- enable cobalt plate:
+-- it was hidden in Angels Smelting: https://github.com/Arch666Angel/mods/blob/d6f95b4964c0c995e4a4847bf3f0bd28686d8b93/angelssmelting/data.lua#L69
+if (angelsmods ~= nil) and (angelsmods.trigger ~= nil) and (angelsmods.trigger.smelting_products["cobalt"] ~= nil) and (mods["bobplates"] ~= nil) then
+    angelsmods.trigger.smelting_products["cobalt"].plate = mods["bobplates"] and true or false
+end
+
 require("prototypes.sci.item")
 require("prototypes.bobextended.bobextended-data")
 require("prototypes.angel-bio")
