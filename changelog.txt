@@ -1,4 +1,11 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.1.4
+Date: 2021.10.14
+  Fixed:
+	- Fix usage of cobalt after Angel mods pushed it to "crystal" tier.
+      - replace it with aluminium, zinc, or steel bearing in recipes that are at "chunk" tier
+      - see: https://github.com/Archemide/MomosTweak/pull/3
+---------------------------------------------------------------------------------------------------
 Version: 1.1.3
 Date: 2021.07.03 
   Fixed:
