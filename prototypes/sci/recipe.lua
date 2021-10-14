@@ -146,7 +146,7 @@ function momoTweak.require.SciRecipe()
 	momoTweak.createRecipe(sci_cat, {{"py-nxag-matrix", 2}},
 	  {
 		{"titanium-plate", 6},
-		{"cobalt-steel-alloy", 4},
+		{"cobalt-steel-alloy", 6},
 		{"building-pack", 7},
 		{"electric-engine-unit", 1},
 		{"lithium-ion-battery", 6},

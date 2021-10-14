@@ -19,10 +19,10 @@ function momoTweak.require.ExtendedFrameUpdate()
 	  {"lead-plate", 7},{"plate-pack-1", 4},{"stone-brick", 14}
 	}
 	newRecipe("intermediate", 30).ingredients = {
-	  {"basic-structure-components", 2},{"brass-gear-wheel", 4},{"cobalt-plate", 3},{"invar-alloy", 14}
+	  {"basic-structure-components", 2},{"brass-gear-wheel", 4},{"aluminium-plate", 8},{"invar-alloy", 14}
 	}
 	newRecipe("advanced", 60).ingredients = {
-	  {"intermediate-structure-components", 2},{"tungsten-plate", 13},{"aluminium-plate", 16},
+	  {"intermediate-structure-components", 2},{"tungsten-plate", 13},{"cobalt-plate", 20},
 	  {"titanium-plate", 22},{"cobalt-steel-alloy", 10},{"advanced-plastics", 80}
 	}
 	newRecipe("anotherworld", 120).ingredients = {

@@ -139,7 +139,7 @@ bobmods.lib.recipe.add_ingredient(chargepad .. "-1", {"nickel-plate", 2})
 
 local types = {"passive-provider", "active-provider", "storage", "requester", "buffer"}
 for i, t in pairs(types) do
-	bobmods.lib.recipe.add_ingredient("logistic-chest-" .. t, {"cobalt-plate", 3})
+	bobmods.lib.recipe.add_ingredient("logistic-chest-" .. t, {"zinc-plate", 3})
 end
 
 for i, t in pairs(types) do
@@ -167,6 +167,6 @@ bobmods.lib.recipe.add_ingredient("big-electric-pole-4", {"cobalt-plate", 20})
 bobmods.lib.recipe.add_ingredient("substation-3", {"cobalt-plate", 10})
 bobmods.lib.recipe.add_ingredient("substation-4", {"cobalt-plate", 25})
 
-bobmods.lib.recipe.add_ingredient("electric-engine-unit", {"cobalt-plate", 5})
+bobmods.lib.recipe.add_ingredient("electric-engine-unit", {"steel-bearing", 7})
 bobmods.lib.recipe.add_ingredient("storage-tank-3", {"cobalt-plate", 25})
 bobmods.lib.recipe.add_ingredient("storage-tank-4", {"tungsten-plate", 25})
