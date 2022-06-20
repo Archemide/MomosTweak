@@ -30,13 +30,14 @@
 	  "? ScienceCostTweakerM >= 0.17.6",
 	  "? underground-pipe-pack >= 0.17.0",
 	  
-	  "? bobvehicleequipment >= 1.0.1",
-	  "? bobinserters >= 1.0.1",
-	  "? bobenemies >= 1.0.0",
-	  "? ShinyIcons >= 0.17.1",
 	  "? Bio_Industries >= 0.17.5",
-	  "? SpaceMod >= 1.0.0",
+	  "? bobenemies >= 1.0.0",
+	  "? bobinserters >= 1.0.1",
+	  "? bobvehicleequipment >= 1.0.1",
 	  "? LB-Modular-Chests >= 0.17.7",
-	  "? omnilib >= 3.0.4"
+	  "? omnilib >= 3.0.4",
+	  "? SeaBlock >= 0.5.11",
+	  "? ShinyIcons >= 0.17.1",
+	  "? SpaceMod >= 1.0.0"
   ]
 }

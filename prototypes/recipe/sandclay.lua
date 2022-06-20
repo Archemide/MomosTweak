@@ -103,5 +103,38 @@ momoTweak.createRecipe("chemical-furnace", {{"glass", 1}}, {
 	{type="item", name="solid-sand", amount=12},
 	{type="fluid", name="steam", amount=80, temperature=165}},
 	13, momoTweak.get_tech_of_recipe("chemical-boiler"))
-	
 
+-- make sure mixing furnaces are able to make things like Glass (from steam+sand) which is needed to progress with science vials etc:
+local furnacesToModify = {
+--     "stone-chemical-furnace",
+--     "fluid-chemical-furnace",
+--     "steel-chemical-furnace",
+--     "electric-chemical-furnace",
+    {name = "stone-mixing-furnace", add_fluid_box = 1},
+    {name = "fluid-mixing-furnace", add_fluid_box = 1},
+    {name = "steel-mixing-furnace", add_fluid_box = 1},
+    {name = "electric-mixing-furnace", add_fluid_box = 2}
+}
+for i, furnaceInfo in pairs(furnacesToModify) do
+    if (data.raw["assembling-machine"][furnaceInfo.name] ~= nil) then
+        table.insert(data.raw["assembling-machine"][furnaceInfo.name].crafting_categories, "chemical-furnace")
+
+        if (furnaceInfo.add_fluid_box > 0) then
+            local fluid_box_position = {}
+            if (furnaceInfo.add_fluid_box == 1) then
+                fluid_box_position = { 0.5,  -1.5}
+            else
+                fluid_box_position = { 0,  -2}
+            end
+            data.raw["assembling-machine"][furnaceInfo.name].fluid_boxes = {
+              {
+                production_type = 'input',
+                base_area = 10,
+                base_level = -1,
+                pipe_covers = pipecoverspictures(),
+                pipe_connections = {{ type = 'input', position = fluid_box_position }}
+              }
+            }
+        end
+    end
+end

@@ -32,7 +32,9 @@ momoTweak.replace_with_ingredient("advanced-chemical-plant", "pipe", {"bronze-pi
 -- angels-electrolyser-2  angels-air-filter-2  angels-chemical-plant-2  chemical-plant-2  oil-refinery-2 
 momoTweak.replace_with_ingredient("angels-electrolyser-2",     "steel-pipe", {"bronze-pipe", 39})
 momoTweak.replace_with_ingredient("angels-chemical-plant-2",   "steel-pipe", {"bronze-pipe", 15})
-momoTweak.replace_with_ingredient("chemical-plant-2",          "steel-pipe", {"bronze-pipe", 8})
+if (data.raw["assembling-machine"]["chemical-plant-2"] ~= nil) then
+    momoTweak.replace_with_ingredient("chemical-plant-2",          "steel-pipe", {"bronze-pipe", 8})
+end
 momoTweak.replace_with_ingredient("oil-refinery-2",           "steel-pipe", {"bronze-pipe", 36})
 momoTweak.replace_with_ingredient("liquifier-2",              "steel-pipe", {"bronze-pipe", 8})
 

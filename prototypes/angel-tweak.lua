@@ -37,12 +37,6 @@ function momoTweak.ReworkAngelIndGroup()
 end
 
 function momoTweak.angelChemPlanTweak()
-	for i, m in pairs({"angels-chemical-plant", "angels-chemical-plant-2", "angels-chemical-plant-3", "angels-chemical-plant-4"}) do
-		if data.raw["assembling-machine"][m] then
-			data.raw["assembling-machine"][m].fluid_boxes = {}
-		end
-	end
-	
 	if data.raw.item["valve-return"] then
 		bobmods.lib.recipe.replace_ingredient("angels-chemical-plant", "pipe", "valve-return")
 	end

@@ -26,9 +26,9 @@ if momoTweak.mods.sct then
 end
 
 if momoTweak.mods.msp then
-	for i = 3,30 do
+	for i = 4,30 do
 		local msp = "more-science-pack-" .. i
-		momoIRTweak.recipe.ValidateRecipe(msp, function(recipe) 
+		momoIRTweak.recipe.ValidateRecipe(msp, function(recipe)
 			local result = GetResultAmount(recipe.name)
 			AddIng(recipe.name, ITEM("momo-vial", result))
 		end)
