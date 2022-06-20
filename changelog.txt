@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.1.5
+Date: 2022.06.20
+  Fixed:
+	- Fixes for combatibility with recent changes from SeaBlock and Angels mods. See: https://github.com/Archemide/MomosTweak/pull/4
+---------------------------------------------------------------------------------------------------
 Version: 1.1.4
 Date: 2021.10.14
   Fixed:
