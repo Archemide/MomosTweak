@@ -9,12 +9,33 @@ momoTweak.settings.isLoadBobExtended = true
 
 momoTweak.mods.sct = mods["ScienceCostTweakerM"]
 momoTweak.mods.angelBio = mods["angelsbioprocessing"]
-momoTweak.mods.msp = mods["MoreSciencePacks"]
+momoTweak.mods.msp = mods["MoreSciencePacks"] or mods["MoreSciencePacks-for1_1"]
 momoTweak.mods.bioIndustries = mods["Bio_Industries"]
 momoTweak.mods.modularChests = mods["LB-Modular-Chests"]
 momoTweak.mods.undergroundPipePack = mods["underground-pipe-pack"]
 
 if not momoTweak.py then momoTweak.py = {} end
+
+
+if mods["SeaBlock"] then
+
+    -- Set Angel's triggers - is to revert SeaBlock changes which removed those plates:
+    -- see: https://github.com/KiwiHawk/SeaBlock/blob/0f68adb0797f3989e96962085db735b7f8110a17/SeaBlock/data/misc.lua#L15-L23
+    -- see: https://github.com/KiwiHawk/SeaBlock/blob/805b3a133d73af1a5dead0c6679a9856806efb12/SeaBlock/data-updates/misc.lua#L211-L214
+
+    --angelsmods.trigger.smelting_products['copper'].powder = true
+    angelsmods.trigger.smelting_products['nickel'].plate = true
+    angelsmods.trigger.smelting_products['zinc'].plate = true
+    angelsmods.trigger.smelting_products['cobalt'].plate = true
+    --angelsmods.trigger.ores['platinum'] = true
+    --angelsmods.trigger.smelting_products['platinum'].plate = true
+    --angelsmods.trigger.smelting_products['platinum'].wire = true
+    angelsmods.trigger.smelting_products["gunmetal"].plate = true
+end
+
+
+
+
 
 --- Init IR lib
 require("function.helper")
@@ -54,7 +75,9 @@ if data.raw["assembling-machine"]["burner-assembling-machine"] then
 	momoTweak.burner = "burner-assembling-machine"
 else
 	-- Burner assembler should provided by bob assembly mod
-	-- require("prototypes.burner-assembler") 
+	if (settings.startup["bobmods-assembly-burner"] ~= nil) and (settings.startup["bobmods-assembly-burner"].value == false) then
+	    require("prototypes.burner-assembler")
+	end
 end
 
 if (momoTweak.mods.angelBio) then

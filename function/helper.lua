@@ -26,6 +26,15 @@ function momoIRTweak.DeepCopy(tableToCopy)
 	return table.deep_copy(tableToCopy)
 end
 
+function momoIRTweak.tableAddValueIfUnique(aTable, value)
+	for k, v in pairs(aTable) do
+	    if (v == value) then
+	        return
+	    end
+	end
+	table.insert(aTable, value)
+end
+
 function momoIRTweak.DumpTable(_table)
 	if (type(_table) == "table") then
 		for k, v in pairs(_table) do 

@@ -11,17 +11,27 @@ function momoTweak.require.SciRecipe()
 	end
 	bobmods.lib.tech.add_recipe_unlock("optics", "mixing-furnace")
 
-	momoTweak.createRecipe("mixing-furnace", {{"momo-vial", 2}},
-		{
-			{"glass", 6},
-			{"coal", 1}
-		}, 6, "optics")
+    -- in SeaBlock there is no coal - so use use "wood-charcoal" instead:
+	if mods["SeaBlock"] then
+        momoTweak.createRecipe("mixing-furnace", {{"momo-vial", 2}},
+            {
+                {"glass", 6},
+                {"wood-charcoal", 1}
+            }, 6, momoTweak.get_tech_of_recipe("coal-crushed"), "coke")
+	else
 
-	momoTweak.createRecipe("mixing-furnace", {{"momo-vial", 2}},
-		{
-			{"glass", 6},
-			{"solid-coke", 1}
-		}, 6, momoTweak.get_tech_of_recipe("coal-crushed"), "coke")
+        momoTweak.createRecipe("mixing-furnace", {{"momo-vial", 2}},
+            {
+                {"glass", 6},
+                {"coal", 1}
+            }, 6, "optics")
+
+        momoTweak.createRecipe("mixing-furnace", {{"momo-vial", 2}},
+            {
+                {"glass", 6},
+                {"solid-coke", 1}
+            }, 6, momoTweak.get_tech_of_recipe("coal-crushed"), "coke")
+	end
 		
 	-- ------------------------ Vial -----------------------------------------------
 
@@ -111,7 +121,7 @@ function momoTweak.require.SciRecipe()
 	  {"solar-panel-2", 1},
 	  {"assembling-machine-2", 1},
 	  {"electric-furnace", 1},
-	  {"chemical-plant-2", 1},
+	  {"angels-chemical-plant-2", 1},
 	  {"pre-cyan-sci", 3}
 	}, 14, tech_sci_pro)
 
