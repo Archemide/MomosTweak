@@ -40,6 +40,13 @@ if data.raw.item["solid-clay"] and data.raw.item["solid-coke"] then
 end
 
 
+local limestoneSandCategory = "ore-sorting-t1"
+if data.raw["recipe-category"] ~= nil then
+    if data.raw["recipe-category"][ "ore-refining-t1"] ~= nil then
+        limestoneSandCategory = "ore-refining-t1"
+    end
+end
+
 --angel mud to sand
 if data.raw["assembling-machine"]["washing-plant"] then
 	data:extend({{
@@ -62,13 +69,6 @@ if data.raw["assembling-machine"]["washing-plant"] then
 		 icon_size = 32
 	}})
 	bobmods.lib.tech.add_recipe_unlock("water-washing-1", "momo-mud-sand")
-
-	local limestoneSandCategory = "ore-sorting-t1"
-	if data.raw["recipe-category"] ~= nil then
-		if data.raw["recipe-category"][ "ore-refining-t1"] ~= nil then
-			limestoneSandCategory = "ore-refining-t1"
-		end
-	end
 
 	data:extend({{
 		 type = "recipe",
@@ -98,6 +98,21 @@ if data.raw["recipe-category"]["biofarm-mod-crushing"] then
 	{{"stone-crushed", 2}}, 
 	4, momoTweak.get_tech_of_recipe("bi_recipe_stone_crusher"), "sand-upgrade")
 end
+
+if mods["SeaBlock"] then
+    momoTweak.createRecipe(limestoneSandCategory,
+    {{"solid-sand", 3}},
+    {{"stone-crushed", 2}},
+    4, true, "stone-crushed-crushing-to-sand")
+
+
+    momoTweak.createRecipe(limestoneSandCategory,
+    {{"stone-crushed", 2}},
+    {{"stone", 3}},
+    4, true, "stone-crushing-to-crushed-stone")
+end
+
+
 
 momoTweak.createRecipe("chemical-furnace", {{"glass", 1}}, {
 	{type="item", name="solid-sand", amount=12},

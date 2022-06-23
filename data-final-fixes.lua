@@ -20,6 +20,7 @@ require("prototypes.sci.final-fix")
 data.raw.item[momoTweak.burner].subgroup = data.raw.item["assembling-machine-1"].subgroup
 
 require("prototypes.fix-angels-machine")
+require("prototypes.fix-seablock-machines")
 require("prototypes.sci.sci30result-preset")
 
 if not momoTweak.isLoadScienceRecipeInUpdates then
