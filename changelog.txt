@@ -1,4 +1,11 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.1.6
+Date: 2022.06.23
+  Fixed:
+	- SeaBlock: fix for uncraftable early machines like "Electrolyser 1" . See: https://github.com/Archemide/MomosTweak/pull/7
+	    - also ensure alginic acid is handcraftable
+        - also add way to crush stone into crushed stone, and that into sand
+---------------------------------------------------------------------------------------------------
 Version: 1.1.5
 Date: 2022.06.20
   Fixed:

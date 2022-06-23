@@ -171,7 +171,10 @@ function momoTweak.angelBio.FinalFixed()
 end
 
 function momoTweak.angel_electrolysis_recipe()
-	data.raw.recipe["solid-alginic-acid"].category = "electrolysis"
+	-- If SeaBlock mod is loaded then this alginic acid needs to be handcraftable for basic circuits - so in such case do not move this recipe to electrolysis:
+	if not mods["SeaBlock"] then
+		data.raw.recipe["solid-alginic-acid"].category = "electrolysis"
+	end
 end
 
 
