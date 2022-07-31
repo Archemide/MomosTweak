@@ -7,8 +7,12 @@ if settings.startup["momo-enable-progress-battery"].value then
 	momoTweak.set_amount_ingredient(battery.silver, {"silver-oxide", 4})
 	data.raw.recipe["lithium"].energy_required = 7
 	data.raw.recipe["lithium-water-electrolysis"].energy_required = 7
-	momoTweak.set_amount_ingredient("lithium", {"lithium-chloride", 3})
-	momoTweak.set_amount_ingredient("lithium-water-electrolysis", {"lithium-chloride", 2})
+
+    if not mods["angelsrefining"] then
+        -- see: https://mods.factorio.com/mod/MomosTweak/discussion/62e5c044526e9f0ac3baf0a8
+        momoTweak.set_amount_ingredient("lithium", {"lithium-chloride", 3})
+        momoTweak.set_amount_ingredient("lithium-water-electrolysis", {"lithium-chloride", 2})
+    end
 	
 	local electricPole = momoTweak.electricPole
 	bobmods.lib.recipe.add_ingredient(electricPole.get_medium    (2), {battery.basic, 2})
