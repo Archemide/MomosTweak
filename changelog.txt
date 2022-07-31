@@ -1,4 +1,10 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.1.7
+Date: 2022.07.31
+  Fixed:
+	- Dont add 'lithium-chloride' to recipes if Angels Refining mod is active.
+	    - Thanks to user A.creature for report in https://mods.factorio.com/mod/MomosTweak/discussion/62e5c044526e9f0ac3baf0a8
+---------------------------------------------------------------------------------------------------
 Version: 1.1.6
 Date: 2022.06.23
   Fixed:
