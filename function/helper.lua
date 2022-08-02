@@ -35,6 +35,24 @@ function momoIRTweak.tableAddValueIfUnique(aTable, value)
 	table.insert(aTable, value)
 end
 
+function momoIRTweak.tableFindValue(aTable, value)
+	for k, v in pairs(aTable) do
+		if (v == value) then
+			return true
+		end
+	end
+	return false
+end
+
+function momoIRTweak.tableRemoveItem(aTable, value)
+	for k,v in pairs(aTable) do
+		if v == value then
+			table.remove(aTable, k)
+			return
+		end
+	end
+end
+
 function momoIRTweak.DumpTable(_table)
 	if (type(_table) == "table") then
 		for k, v in pairs(_table) do 
