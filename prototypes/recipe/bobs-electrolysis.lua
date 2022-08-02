@@ -18,7 +18,13 @@ if data.raw["recipe-category"]["electrolysis"] then
   bobmods.lib.recipe.add_ingredient("low-density-structure", {"silicon", 10})
   
   data.raw.recipe[momoTweak.batterys.lithium].category = "electrolysis"
+  data.raw.recipe[momoTweak.batterys.lithium].always_show_made_in = true
   data.raw.recipe[momoTweak.batterys.silver].category = "electrolysis"
+  data.raw.recipe[momoTweak.batterys.silver].always_show_made_in = true
+
+
+
+
   if (momoTweak.mods.angelBio) then
 	momoTweak.angel_electrolysis_recipe()
   end

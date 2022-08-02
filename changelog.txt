@@ -1,4 +1,10 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.1.8
+Date: 2022.08.02
+  Fixed:
+	- Fix angels electrolysers and chemical plants (crafting categories, ingredient count etc)
+	    - Thanks to user A.creature for report in https://mods.factorio.com/mod/MomosTweak/discussion/62e83aed93672d94df6f8817
+---------------------------------------------------------------------------------------------------
 Version: 1.1.7
 Date: 2022.07.31
   Fixed:
