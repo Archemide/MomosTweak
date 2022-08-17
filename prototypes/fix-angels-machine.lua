@@ -63,22 +63,41 @@ if settings.startup["momo-fix-angels-chemistry-machine"].value then
             for k, chemicalPlantName in pairs({"angels-chemical-plant", "angels-chemical-plant-2", "angels-chemical-plant-3", "angels-chemical-plant-4"}) do
                 momoIRTweak.tableAddValueIfUnique(data.raw["assembling-machine"][chemicalPlantName].crafting_categories, cat_override)
                 momoIRTweak.tableAddValueIfUnique(data.raw["assembling-machine"][chemicalPlantName].crafting_categories, "chemistry")
-				momoIRTweak.tableRemoveItem(data.raw["assembling-machine"][chemicalPlantName].crafting_categories, "liquifying")
             end
         end
-
-        -- those plants need to be able to craft Momo recipes which require many ingredients:
-		for k, chemicalPlantName in pairs({"angels-chemical-plant", "angels-chemical-plant-2", "angels-chemical-plant-3", "angels-chemical-plant-4"}) do
-			data.raw["assembling-machine"][chemicalPlantName].ingredient_count = 50
-		end
-		data.raw["assembling-machine"]["advanced-chemical-plant-2"].ingredient_count = 50
-
-		for k, electrolyserName in pairs({"angels-electrolyser", "angels-electrolyser-2", "angels-electrolyser-3", "angels-electrolyser-4"}) do
-			if (data.raw["assembling-machine"][electrolyserName] ~= nil) then
-				data.raw["assembling-machine"][electrolyserName].ingredient_count = 50;
-			end
-		end
 
 	    momoTweak.angelChemPlanTweak()
 	end
 end
+
+-- those plants need to be able to craft Momo recipes which require many ingredients:
+for k, chemicalPlantName in pairs({"angels-chemical-plant", "angels-chemical-plant-2", "angels-chemical-plant-3", "angels-chemical-plant-4"}) do
+	if (data.raw["assembling-machine"][chemicalPlantName] ~= nil) then
+		data.raw["assembling-machine"][chemicalPlantName].ingredient_count = 50
+		-- this category will be handled by liquifiers and advanced chemical plants:
+		momoIRTweak.tableRemoveItem(data.raw["assembling-machine"][chemicalPlantName].crafting_categories, "liquifying")
+	end
+end
+
+for k, electrolyserName in pairs({"angels-electrolyser", "angels-electrolyser-2", "angels-electrolyser-3", "angels-electrolyser-4"}) do
+	if (data.raw["assembling-machine"][electrolyserName] ~= nil) then
+		data.raw["assembling-machine"][electrolyserName].ingredient_count = 50;
+	end
+end
+
+-- adjust liquifiers:
+for k, liquifierName in pairs({"liquifier", "liquifier-2", "liquifier-3", "liquifier-4"}) do
+	if (data.raw["assembling-machine"][liquifierName] ~= nil) then
+		data.raw["assembling-machine"][liquifierName].ingredient_count = 50
+		momoIRTweak.tableAddValueIfUnique(data.raw["assembling-machine"][liquifierName].crafting_categories, "liquifying")
+	end
+end
+
+if (data.raw["assembling-machine"]["advanced-chemical-plant"] ~= nil) then
+	momoIRTweak.tableAddValueIfUnique(data.raw["assembling-machine"]["advanced-chemical-plant-2"].crafting_categories, "liquifying")
+end
+if (data.raw["assembling-machine"]["advanced-chemical-plant-2"] ~= nil) then
+	data.raw["assembling-machine"]["advanced-chemical-plant-2"].ingredient_count = 50
+	momoIRTweak.tableAddValueIfUnique(data.raw["assembling-machine"]["advanced-chemical-plant-2"].crafting_categories, "liquifying")
+end
+
