@@ -40,7 +40,7 @@ function momoTweak.require.Sci30Extreme()
 			return true
 		end
 	 
-		-- recipe
+		-- recipe Starter Science Accumulators chip:
 		local namerecipe = ""
 		local cat = momoTweak.GetScienceCraftingCategory()
 		local unlock_tech = find_tech({4, 3, 2, 1})
@@ -62,7 +62,8 @@ function momoTweak.require.Sci30Extreme()
 		-- gray
 		bobmods.lib.recipe.add_ingredient(momoTweak.sciGun, {"b1", 1})
 	 
-	 
+
+		-- Beginner Science Accumulators chip:
 		unlock_tech = find_tech({7,8,6,5})
 		if isOmni then 
 			unlock_tech = "circuit-network" 
@@ -76,14 +77,15 @@ function momoTweak.require.Sci30Extreme()
 		}, 7, unlock_tech  ) --"circuit-network"
 		bobmods.lib.recipe.remove_ingredient(namerecipe, "iron-plate")
 	 
-	 
+
+		-- Tech Science Accumulators chip:
 		unlock_tech = find_tech({9, 10})
 		if isOmni then 
 			unlock_tech = "electric-energy-accumulators" 
 		end
 		namerecipe = momoTweak.createRecipe(cat, {{"b3", 3}}, {
-			{"b1", 1},
-			{"b2", 1},
+			{"b1", x + 1},
+			{"b2", x + 1},
 			{get_science(9), x + 1},
 			{get_science(10), x + 2},
 			{"engine-unit", 2},
@@ -95,13 +97,14 @@ function momoTweak.require.Sci30Extreme()
 		bobmods.lib.recipe.remove_ingredient(momoTweak.sci3, "engine-unit")
 		bobmods.lib.recipe.add_ingredient(momoTweak.sci3, {"b3", 2})
 	 
-	 
+
+		-- Express Science Accumulators chip:
 		unlock_tech = find_tech({17,15,12,11})
 		if isOmni then 
 			unlock_tech = "electric-energy-distribution-2" 
 		end
 		namerecipe = momoTweak.createRecipe(cat, {{"b4", 3}}, {
-			{"b3", 1},
+			{"b3", x + 1},
 			{get_science(11), x + 2},
 			{get_science(12), x + 1},
 			{get_science(15), x + 2},
@@ -110,18 +113,19 @@ function momoTweak.require.Sci30Extreme()
 		}, 7, unlock_tech  ) -- "electric-energy-distribution-2"
 		bobmods.lib.recipe.remove_ingredient(namerecipe, "iron-plate")
 		
-		-- express
+		-- add chip to "logistic science"
 		bobmods.lib.recipe.add_ingredient(momoTweak.sciLogistic, {"b4", 2})
-		-- production
+		-- add chip to "production science":
 		bobmods.lib.recipe.add_ingredient(momoTweak.sciProduction, {"b4", 3})
 	 
-	 
+
+		-- High Tech Science Accumulators chip
 		unlock_tech = find_tech({23,22,21,18,19,20})
 		if isOmni then 
 			unlock_tech = "effect-transmission" 
 		end
 		namerecipe = momoTweak.createRecipe(cat, {{"b5", 3}}, {
-			{"b4", 1},
+			{"b4", x + 1},
 			{get_science(18), x + 2},
 			{get_science(19), x + 1},
 			{get_science(20), x + 2},
@@ -131,32 +135,46 @@ function momoTweak.require.Sci30Extreme()
 			{"cyan-sci", 2}
 		}, 7, unlock_tech  ) -- "effect-transmission"
 		bobmods.lib.recipe.remove_ingredient(namerecipe, "iron-plate")
-		
-		--high tech
+
+		-- add chip to "utility science":
 		bobmods.lib.recipe.add_ingredient(momoTweak.sciTech, {"b5", 4})
 	 
-	 
+
+		-- Alternate World Atomic controller chip
 		unlock_tech = find_tech({28})
 		if isOmni then 
 			unlock_tech = "atomic-bomb" 
 		end
 		namerecipe = momoTweak.createRecipe(cat, {{"atc", 1}}, {
-			{"b4", 3},
-			{"b5", 2},
+			{"b4", x + 3},
+			{"b5", x + 2},
 			{"py-nxag-matrix", 3},
 			{"py-superconductor", 6},
 			{"pre-high-sci", 3},
+			{get_science(13), x + 1},
+			{get_science(14), x + 1},
+			{get_science(16), x + 1},
+			{get_science(24), x + 1},
+			{get_science(25), x + 1},
+			{get_science(26), x + 1},
+			{get_science(27), x + 1},
+
 			{get_science(28), x + 4},
+			{get_science(29), x + 1},
+			{get_science(30), x + 1},
 			{"advanced-processing-unit", 8},
 			{"processing-electronics", 12}
 		}, 20, unlock_tech) --"atomic-bomb"
 		bobmods.lib.recipe.remove_ingredient(namerecipe, "iron-plate")
 		
 		--29
-		bobmods.lib.recipe.add_ingredient("more-science-pack-29", {"atc", 2})
+		--bobmods.lib.recipe.add_ingredient("more-science-pack-29", {"atc", 2})
 		
 		--30
-		bobmods.lib.recipe.remove_ingredient("more-science-pack-30", "advanced-processing-unit")
-		bobmods.lib.recipe.add_ingredient("more-science-pack-30", {"atc", 5})
+		--bobmods.lib.recipe.remove_ingredient("more-science-pack-30", "advanced-processing-unit")
+		--bobmods.lib.recipe.add_ingredient("more-science-pack-30", {"atc", 5})
+
+		-- add chip to "satellite" recipe - so it will be required to get "Space science pack":
+		bobmods.lib.recipe.add_ingredient("satellite", {"atc", 1})
 	end
 end

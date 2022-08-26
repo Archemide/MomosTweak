@@ -1,4 +1,12 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.1.10
+Date: 2022.08.26
+  Fixed:
+	- Fix usage of 'Alternate World Atomic controller chip' in science recipes
+      - dont add it do MSP packs 29, 30
+      - add it to 'satellite' recipe - so it will be required to get 'Space science pack'
+      - add to recipe of said chip MSP packs which were not used in other recipes - useful for MSP mode: '30 Packs are Intermediates'. Also will make game harder :)
+---------------------------------------------------------------------------------------------------
 Version: 1.1.9
 Date: 2022.08.17
   Fixed:

@@ -1,6 +1,6 @@
 {
   "name": "MomosTweak",
-  "version": "1.1.9",
+  "version": "1.1.10",
   "factorio_version": "1.1",
   "title": "MomosTweak",
   "author": "Archemide",
@@ -26,7 +26,7 @@
 	  "angelssmelting >= 0.6.13",
 	  
 	  "? angelsbioprocessing >= 0.7.16",
-	  "? MoreSciencePacks >= 0.1.14",
+	  "? MoreSciencePacks-for1_1 >= 0.1.24",
 	  "? ScienceCostTweakerM >= 0.17.6",
 	  "? underground-pipe-pack >= 0.17.0",
 	  
