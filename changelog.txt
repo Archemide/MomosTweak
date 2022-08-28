@@ -1,4 +1,10 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.1.11
+Date: 2022.08.26
+  Fixed:
+	- Add handcraftable recipe for Alginic acid
+      - bug reported by user mlxix in https://mods.factorio.com/mod/MomosTweak/discussion/630abdf4df42b7581198be96
+---------------------------------------------------------------------------------------------------
 Version: 1.1.10
 Date: 2022.08.26
   Fixed:

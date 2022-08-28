@@ -171,27 +171,21 @@ function momoTweak.angelBio.FinalFixed()
 end
 
 function momoTweak.angel_electrolysis_recipe()
-	-- If SeaBlock mod is loaded then this alginic acid needs to be handcraftable for basic circuits - so in such case do not move this recipe to electrolysis:
-	if not mods["SeaBlock"] then
-		data.raw.recipe["solid-alginic-acid"].category = "electrolysis"
-	end
+	data.raw.recipe["solid-alginic-acid"].category = "electrolysis"
+
+
+	-- Create alternate handcraftable recipe for Alginic acid - so mods like SeaBlock are not blocked if basic circuits needs paper (electrolyzer would be impossible to craft in such case):
+	local alginicAcidAlternate = table.deepcopy(data.raw.recipe["solid-alginic-acid"])
+
+	alginicAcidAlternate.category = "crafting"
+	alginicAcidAlternate.name = "solid-alginic-acid-handcraftable"
+	alginicAcidAlternate.ingredients = {
+		{"algae-green", 18},
+		{"algae-brown", 30}
+	}
+	alginicAcidAlternate.localised_name = "Alginic acid (handcraftable)"
+
+	data:extend({alginicAcidAlternate})
+
+	bobmods.lib.tech.add_recipe_unlock(momoTweak.get_tech_of_recipe("solid-alginic-acid"), "solid-alginic-acid-handcraftable")
 end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
