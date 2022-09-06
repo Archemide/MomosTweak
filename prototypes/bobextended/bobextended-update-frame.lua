@@ -43,6 +43,7 @@ function momoTweak.require.ExtendedFrameUpdate()
 	end
 	bobmods.lib.tech.add_recipe_unlock(unlock_tech, "basic-structure-components")
 	bobmods.lib.tech.add_recipe_unlock(momoTweak.get_tech_of_recipe("engine-unit"), "intermediate-structure-components")
+	bobmods.lib.tech.add_recipe_unlock("angels-metallurgy-2", "intermediate-structure-components")
 	bobmods.lib.tech.add_recipe_unlock("automation-3", "advanced-structure-components")
 	bobmods.lib.tech.add_recipe_unlock("automation-5", "anotherworld-structure-components")
 

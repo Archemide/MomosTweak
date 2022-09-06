@@ -1,6 +1,6 @@
 {
   "name": "MomosTweak",
-  "version": "1.1.11",
+  "version": "1.2.0",
   "factorio_version": "1.1",
   "title": "MomosTweak",
   "author": "Archemide",
@@ -26,6 +26,7 @@
 	  "angelssmelting >= 0.6.13",
 	  
 	  "? angelsbioprocessing >= 0.7.16",
+	  "? angelsindustries >= 0.4.16",
 	  "? MoreSciencePacks-for1_1 >= 0.1.24",
 	  "? ScienceCostTweakerM >= 0.17.6",
 	  "? underground-pipe-pack >= 0.17.0",
@@ -36,6 +37,7 @@
 	  "? bobvehicleequipment >= 1.0.1",
 	  "? LB-Modular-Chests >= 0.17.7",
 	  "? omnilib >= 3.0.4",
+	  "? P-U-M-P-S >= 1.1.66",
 	  "? SeaBlock >= 0.5.11",
 	  "? ShinyIcons >= 0.17.1",
 	  "? SpaceMod >= 1.0.0"

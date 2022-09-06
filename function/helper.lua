@@ -27,7 +27,7 @@ function momoIRTweak.DeepCopy(tableToCopy)
 end
 
 function momoIRTweak.tableAddValueIfUnique(aTable, value)
-	for k, v in pairs(aTable) do
+	for _, v in pairs(aTable) do
 	    if (v == value) then
 	        return
 	    end
@@ -36,7 +36,7 @@ function momoIRTweak.tableAddValueIfUnique(aTable, value)
 end
 
 function momoIRTweak.tableFindValue(aTable, value)
-	for k, v in pairs(aTable) do
+	for _, v in pairs(aTable) do
 		if (v == value) then
 			return true
 		end
@@ -58,7 +58,7 @@ function momoIRTweak.DumpTable(_table)
 		for k, v in pairs(_table) do 
 			momoIRTweak.indentAmount = momoIRTweak.indentAmount + 1
 			local indent = ""
-			for i=1, momoIRTweak.indentAmount do 
+			for _ = 1, momoIRTweak.indentAmount do
 				indent = indent .. "   "
 			end
 			momoIRTweak.AddStringToDumpStack("\n" .. indent .. tostring(k) .. ":")
