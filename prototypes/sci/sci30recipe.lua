@@ -41,8 +41,9 @@ function momoTweak.require.Sci30Recipe()
 		bobmods.lib.recipe.add_ingredient("more-science-pack-21", {"silver-plate", 8})
 		bobmods.lib.recipe.add_ingredient("more-science-pack-25", {"silver-plate", 4})
 		
-		bobmods.lib.recipe.replace_ingredient("more-science-pack-17", "medium-electric-pole", "medium-electric-pole-3")
-		bobmods.lib.recipe.replace_ingredient("more-science-pack-17", "big-electric-pole", "big-electric-pole-3")
+		bobmods.lib.recipe.replace_ingredient("more-science-pack-17", "medium-electric-pole", "medium-electric-pole-2")
+		bobmods.lib.recipe.replace_ingredient("more-science-pack-17", "big-electric-pole", "big-electric-pole-2")
+		bobmods.lib.recipe.replace_ingredient("more-science-pack-17", "substation", "substation-2")
 		bobmods.lib.recipe.add_ingredient("more-science-pack-17", {momoTweak.ele.unit[2], 3})
 		
 		bobmods.lib.recipe.add_ingredient("more-science-pack-18", {ele.board[3], 20})

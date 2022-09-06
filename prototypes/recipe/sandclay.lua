@@ -99,18 +99,21 @@ if data.raw["recipe-category"]["biofarm-mod-crushing"] then
 	4, momoTweak.get_tech_of_recipe("bi_recipe_stone_crusher"), "sand-upgrade")
 end
 
+
+local stoneCrushedIngredientsMultiplier = 2
 if mods["SeaBlock"] then
-    momoTweak.createRecipe(limestoneSandCategory,
-    {{"solid-sand", 3}},
-    {{"stone-crushed", 2}},
-    4, true, "stone-crushed-crushing-to-sand")
-
-
-    momoTweak.createRecipe(limestoneSandCategory,
-    {{"stone-crushed", 2}},
-    {{"stone", 3}},
-    4, true, "stone-crushing-to-crushed-stone")
+    stoneCrushedIngredientsMultiplier = 1
 end
+momoTweak.createRecipe(limestoneSandCategory,
+{{"solid-sand", 3}},
+{{"stone-crushed", 2 * stoneCrushedIngredientsMultiplier}},
+4, true, "stone-crushed-crushing-to-sand")
+
+
+momoTweak.createRecipe(limestoneSandCategory,
+{{"stone-crushed", 2}},
+{{"stone", 3 * stoneCrushedIngredientsMultiplier}},
+4, true, "stone-crushing-to-crushed-stone")
 
 
 

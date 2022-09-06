@@ -1,4 +1,14 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.2.0
+Date: 2022.09.06
+  Change:
+    - added compatibility with following mods: angelsindustries ( https://mods.factorio.com/mod/angelsindustries ), "P-U-M-P-S" / "osm-lib" ( https://mods.factorio.com/mod/P-U-M-P-S )
+  Added:
+    - tests for "progression block". See: function/recipe.lua . They can be executed manually at end of data-final-fixes.lua to see if anything like recipes, technologies etc block player progression up to "satellite". If player can craft satellite then OK - if not then in factorio-current.log (in your Factorio dir) you should see reasons why some science packs and their ingredients are not craftable.
+  Fixed:
+	- some things blocking craftability of science packs related to mods: angelsindustries, MoreSciencePacks-for1_1, SeaBlock
+	    - Thanks to user mlxix for report: https://mods.factorio.com/mod/MomosTweak/discussion/630abdf4df42b7581198be96
+---------------------------------------------------------------------------------------------------
 Version: 1.1.11
 Date: 2022.08.26
   Fixed:

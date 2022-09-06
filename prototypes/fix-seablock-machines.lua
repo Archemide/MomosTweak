@@ -10,4 +10,13 @@ if mods["SeaBlock"] then
 	bobmods.lib.tech.add_recipe_unlock("steel-processing", "momo-tinplate-pack-1-N1")
 	bobmods.lib.tech.remove_recipe_unlock("logistic-science-pack", "momo-plate-pack-1-N1")
 	bobmods.lib.tech.remove_recipe_unlock("logistic-science-pack", "momo-tinplate-pack-1-N1")
+
+	-- rubber is not craftable at "more-science-pack-7" level - thus blocking progression
+	bobmods.lib.recipe.remove_ingredient("constant-combinator", "rubber")
+	bobmods.lib.recipe.remove_ingredient("arithmetic-combinator", "rubber")
+	bobmods.lib.recipe.remove_ingredient("decider-combinator", "rubber")
+
+	if momoTweak.mods.msp then
+		bobmods.lib.tech.add_recipe_unlock("angels-coal-processing", "more-science-pack-5")
+	end
 end
