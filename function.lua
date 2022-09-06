@@ -9,6 +9,21 @@ function momoTweak.replace_with_ingredient(recipeName, old, newItem)
   bobmods.lib.recipe.add_ingredient(recipeName, newItem)
 end
 
+function momoTweak.replace_with_ingredient_in_all_recipes(old, newItem)
+	for i,recipe in pairs(data.raw.recipe) do
+		if recipe.ingredients then
+			for j, ing in pairs(recipe.ingredients) do
+				local item = {}
+				if ing then item = bobmods.lib.item.ingredient_simple(ing) else item.name = "__" end
+				if  item.name == old then
+					log("MTKL Recipe: replacing ".. old .. " => " .. newItem .. " in recipe: " .. recipe.name)
+					momoTweak.replace_with_ingredient(recipe.name, old, newItem)
+				end
+			end
+		end
+	end
+end
+
 function momoTweak.multiple_amount_ingredient(recipeName, itemName, multiply)
   local oldValue = 0
   -- check for straing 
@@ -178,7 +193,7 @@ function momoTweak.createRecipe(cat ,results, ingredients, energy, tech, extrana
   local namegen = momoTweak.genRecipeNameFromResult(result)
   local enabled = "false"
   if tech == true then
-    enabled = "true"
+    enabled = true
   end 
   
   if data.raw.recipe[namegen] then namegen = "momo-" .. extraname .. result.name .. "-N" .. result.amount end

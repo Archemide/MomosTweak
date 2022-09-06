@@ -9,7 +9,8 @@ momoTweak.settings.isLoadBobExtended = true
 
 momoTweak.mods.sct = mods["ScienceCostTweakerM"]
 momoTweak.mods.angelBio = mods["angelsbioprocessing"]
-momoTweak.mods.msp = mods["MoreSciencePacks"] or mods["MoreSciencePacks-for1_1"]
+momoTweak.mods.angelsindustries = mods["angelsindustries"] and settings.startup["angels-enable-industries"] ~= nil and settings.startup["angels-enable-industries"].value == true and settings.startup["angels-enable-components"] ~= nil and settings.startup["angels-enable-components"].value == true
+momoTweak.mods.msp = mods["MoreSciencePacks"] or mods["MoreSciencePacks-for1_1"] -- aka MSP30 or MSP
 momoTweak.mods.bioIndustries = mods["Bio_Industries"]
 momoTweak.mods.modularChests = mods["LB-Modular-Chests"]
 momoTweak.mods.undergroundPipePack = mods["underground-pipe-pack"]

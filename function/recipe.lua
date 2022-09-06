@@ -66,6 +66,20 @@ function momoIRTweak.recipe.ChangePrototypeResults(prototype, newName, results)
 	end
 end
 
+function momoIRTweak.recipe.ChangeRecipeResults(recipeName, results)
+	local recipe = data.raw.recipe[recipeName]
+	if not recipe then
+		return
+	end
+
+	if (recipe.normal) then
+		momoIRTweak.recipe.ChangePrototypeResults(recipe.normal, recipeName, table.deepcopy(results))
+		momoIRTweak.recipe.ChangePrototypeResults(recipe.expensive, recipeName, results)
+	else
+		momoIRTweak.recipe.ChangePrototypeResults(recipe, recipeName, results)
+	end
+end
+
 -----------------------------------------------------------------------------------------
 
 --- Ingredient.
@@ -255,7 +269,7 @@ function momoIRTweak.recipe.SetResultCount(recipeName, amount)
 		else
 			if (recipe.results) then
 				if not (recipe.results[2]) then
-					recipe.results[1].amonut = amount
+					recipe.results[1].amount = amount
 				else
 					momoIRTweak.Log("recipe [" .. recipeName .. "] have multiple results.")
 				end
@@ -359,6 +373,44 @@ function momoIRTweak.recipe.SetLocalizedName(recipeName, localName)
 	end
 end
 
+
+function momoIRTweak.recipe.reEnableRecipe(recipeName, isEnabled)
+	local recipe = data.raw.recipe[recipeName]
+	if (recipe) then
+		if (recipe.normal) then
+			recipe.normal.hidden = false
+			recipe.normal.enabled = isEnabled
+			recipe.expensive.hidden = false
+			recipe.expensive.enabled = isEnabled
+		else
+			recipe.hidden = false
+			recipe.enabled = isEnabled
+		end
+	end
+end
+
+function momoIRTweak.recipe.reEnableItem(itemName)
+	local item = data.raw.item[itemName];
+	if item then
+		if not item.flags then
+			item.flags = {}
+		end
+
+		local i=1
+		while i <= #item.flags do
+			if item.flags[i] == "hidden" then
+				-- Note: item.flags is array - not "Set" ( see https://forum.multitheftauto.com/topic/130181-lua-tables-as-sets-instead-of-arrays/ )
+				-- In this case we dont increase index "i" because after removal of item of table(array) the indexes "shift". See: https://stackoverflow.com/questions/12394841/safely-remove-items-from-an-array-table-while-iterating/12397571#12397571  and https://stackoverflow.com/questions/1758991/how-to-remove-a-lua-table-entry-by-its-key
+				-- We need to iterate over all items of array because its possible that more than 1 item has "hidden" value - so no early return here.
+				table.remove(item.flags, i)
+			else
+				i = i + 1
+			end
+		end
+
+	end
+end
+
 -- Warning this function may take half a year to finish
 function momoIRTweak.DumpRecipes()
 	momoIRTweak.dumpRecipesText = "Recipe dump \n"
@@ -368,4 +420,3 @@ function momoIRTweak.DumpRecipes()
 	end
 	momoIRTweak.Log(momoIRTweak.dumpText)
 end
-
