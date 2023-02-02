@@ -1,4 +1,10 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.2.1
+Date: 2023.02.02
+  Fixed:
+	- underground animations error (purple and green belts)
+      - bug reported by user infantrymanforlife in https://mods.factorio.com/mod/MomosTweak/discussion/63daae2f896035ce8c348bbd
+---------------------------------------------------------------------------------------------------
 Version: 1.2.0
 Date: 2022.09.06
   Change:

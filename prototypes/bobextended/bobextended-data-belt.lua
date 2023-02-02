@@ -26,8 +26,8 @@ function momoTweak.require.ExtendedDataBelt()
 		if class == "a" then return data.raw["underground-belt"]["underground-belt"].belt_animation_set end
 		if class == "fast" then return data.raw["underground-belt"]["fast-underground-belt"].belt_animation_set end
 		if class == "express" then return data.raw["underground-belt"]["express-underground-belt"].belt_animation_set end
-		if class == "purple" then return purple_belt_animation_set end
-		if class == "green" then return green_belt_animation_set end
+		if class == "purple" then return bobmods.logistics.purple_belt_animation_set end
+		if class == "green" then return bobmods.logistics.green_belt_animation_set end
 	end
 
 	local function create(class)
