@@ -1,6 +1,6 @@
 {
   "name": "MomosTweak",
-  "version": "1.2.1",
+  "version": "1.3.0",
   "factorio_version": "1.1",
   "title": "MomosTweak",
   "author": "Archemide",
@@ -38,6 +38,7 @@
 	  "? LB-Modular-Chests >= 0.17.7",
 	  "? omnilib >= 3.0.4",
 	  "? P-U-M-P-S >= 1.1.66",
+	  "? flow-control-expanded-bob >= 1.1.59",
 	  "? SeaBlock >= 0.5.11",
 	  "? ShinyIcons >= 0.17.1",
 	  "? SpaceMod >= 1.0.0"

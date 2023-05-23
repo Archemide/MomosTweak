@@ -12,9 +12,9 @@ Goal: create automatic test for 'no progression blocker':
         2. Go through all items/fluids that can be "mined" (or pumped from "pumpjacks", "offshore pumps" etc) - add them to "craftable_items".
             2a. So start from looping through entities which are miners, pumps etc - and check what are they mining. Then loop through all resources which fit those machines and take items which are mined from them and put them in "craftable_items".
             2b. Make sure that each item is not hidden etc before adding it.
-            2c. Make sure there is machine (mining drill, pumpjack) - which is reasearched and craftable - that can "mine" such item/fluid.
+            2c. Make sure there is machine (mining drill, pumpjack) - which is researched and craftable - that can "mine" such item/fluid.
         3. Go through "researched_recipes" and for each check if is craftable - so if all ingredient items are in "craftable_items". :
-            3a. TODO: Also check if there exists (researched and craftable) entity (machine) which can craft such recipe (check recipe category vs crafting categories of entity etc).
+            3a. Also check if there exists (researched and craftable) entity (machine) which can craft such recipe (check recipe category vs crafting categories of entity etc).
             3b. If such recipe is craftable then: Add all items from its result(s) to "craftable_items" and remove said recipe from "researched_recipes"
                 ^ Make sure that each item is not hidden etc before adding it.
         4. Go through all technologies which are possible to research at this moment. For each check if all required science packs are craftable - if yes then consider such technology researched. In such case add all recipes which this technology unlocks to "researched_recipes"
@@ -37,7 +37,15 @@ function automatic_mod_tests.functions.executeTests(difficulty)
     local researched_technologies = {}
     local craftable_items = {}
     local craftable_fluids = {}
-    local craftable_entities = {}
+    local craftable_mining_entities = {}
+    local craftable_crafting_entities = {}
+    craftable_crafting_entities['assembling-machine'] = {}
+    craftable_crafting_entities['boiler'] = {}
+    craftable_crafting_entities['furnace'] = {}
+
+    -- TODO: test also with: MSP 30 mod, Sea Block
+
+    -- TODO: add "anotherworld" modules to highest levels of machines (but dont break progress). Then iterate over those machines and add also +1 or +2 module slots ( https://wiki.factorio.com/Prototype/CraftingMachine#module_specification ) and maybe increase speed. It should be done because that ingredient is expensive, and there should be more reward for investing in such machine.
 
     local minable_resource_categories = {}
 
@@ -68,6 +76,7 @@ function automatic_mod_tests.functions.executeTests(difficulty)
         craftable_items['angels-ore1-crushed'] = true -- saphirite
         craftable_items['angels-ore3-crushed'] = true -- stiratite
         craftable_items['cellulose-fiber'] = true -- craftable by hand (infinite)
+        craftable_items['stone-crushed'] = true
     end
 
     if mods["SeaBlock"] == nil then
@@ -90,27 +99,31 @@ function automatic_mod_tests.functions.executeTests(difficulty)
     end
 
 
-    while test_iteration_number < 70 do
+    while test_iteration_number < 100 do
         test_iteration_number = test_iteration_number + 1
 
+
         -- Note: This is point 2 in our "automatic test plan"
-        automatic_mod_tests.functions.perform_point_2__populate_craftable_items_and_fluids_from_resources(researched_recipes, craftable_items, craftable_fluids, craftable_entities, minable_resource_categories, test_iteration_number > 1)
+        automatic_mod_tests.functions.perform_point_2__populate_craftable_items_and_fluids_from_resources(researched_recipes, craftable_items, craftable_fluids, craftable_mining_entities, minable_resource_categories, test_iteration_number > 1)
 
         -- Note: This is point 3 in our "automatic test plan"
-        automatic_mod_tests.functions.perform_point_3__populate_craftable_items_from_recipes(researched_recipes, craftable_items, craftable_fluids, difficulty)
+        automatic_mod_tests.functions.perform_point_3__populate_craftable_items_from_recipes(researched_recipes, craftable_items, craftable_fluids, craftable_crafting_entities, test_iteration_number <= 2, difficulty)
 
         -- Note: This is point 4 in our "automatic test plan"
         automatic_mod_tests.functions.perform_point_4__research_technologies(researched_technologies, researched_recipes, craftable_items, difficulty)
     end
 
 
-    if craftable_items['satellite'] == nil then
+    if craftable_items['satellite'] == nil or craftable_items['rocket-silo'] == nil then
+        log("function-tests.lua - automatic_mod_tests.functions.executeTests::end - satellite or rocket-silo is not craftable - please check debug data to find out why:")
+
         log("function-tests.lua - automatic_mod_tests.functions.executeTests::end - researched_recipes(" .. tostring(automatic_mod_tests.functions.tableLength(researched_recipes)) .. "): " .. tostring(serpent.block(researched_recipes)))
 
         log("function-tests.lua - automatic_mod_tests.functions.executeTests::end - craftable_items(" .. tostring(automatic_mod_tests.functions.tableLength(craftable_items)) .. "): " .. tostring(serpent.block(craftable_items)))
         --log("function-tests.lua - automatic_mod_tests.functions.executeTests::end - craftable_items(" .. tostring(automatic_mod_tests.functions.tableLength(craftable_items)) .. "): " .. tostring(serpent.dump(craftable_items)))
         log("function-tests.lua - automatic_mod_tests.functions.executeTests::end - craftable_fluids(" .. tostring(automatic_mod_tests.functions.tableLength(craftable_fluids)) .. "): " .. tostring(serpent.block(craftable_fluids)))
-        log("function-tests.lua - automatic_mod_tests.functions.executeTests::end - craftable_entities(" .. tostring(automatic_mod_tests.functions.tableLength(craftable_entities)) .. "): " .. tostring(serpent.block(craftable_entities)))
+        log("function-tests.lua - automatic_mod_tests.functions.executeTests::end - craftable_mining_entities(" .. tostring(automatic_mod_tests.functions.tableLength(craftable_mining_entities)) .. "): " .. tostring(serpent.block(craftable_mining_entities)))
+        log("function-tests.lua - automatic_mod_tests.functions.executeTests::end - craftable_crafting_entities(" .. tostring(automatic_mod_tests.functions.tableLength(craftable_crafting_entities)) .. "): " .. tostring(serpent.block(craftable_crafting_entities)))
         log("function-tests.lua - automatic_mod_tests.functions.executeTests::end - minable_resource_categories(" .. tostring(automatic_mod_tests.functions.tableLength(minable_resource_categories)) .. "): " .. tostring(serpent.block(minable_resource_categories)))
 
         log("function-tests.lua - automatic_mod_tests.functions.executeTests::end - researched_technologies(" .. tostring(automatic_mod_tests.functions.tableLength(researched_technologies)) .. "): " .. tostring(serpent.block(researched_technologies)))
@@ -122,6 +135,17 @@ function automatic_mod_tests.functions.executeTests(difficulty)
     end
 
     log("function-tests.lua - automatic_mod_tests.functions.executeTests::end - finished for difficulty: " .. difficulty)
+
+
+    -- Note: comment it out before commit (for manual debug only, big amount of data):
+    --log("function-tests.lua - automatic_mod_tests.functions.executeTests::end - list names in data.raw 2 levels deep:(" .. tostring(automatic_mod_tests.functions.tableLength(data.raw)) .. "): ")
+    --for type_name,objects_of_type in pairs(data.raw) do
+    --    log("data.raw[" .. type_name .."]:")
+    --    for object_name,a_object in pairs(objects_of_type) do
+    --        log("data.raw[" .. type_name .."][" .. object_name .. "]")
+    --    end
+    --end
+    --log("function-tests.lua - automatic_mod_tests.functions.executeTests::end - list names in data.raw - end of dump")
 end
 
 
@@ -130,20 +154,20 @@ end
 -- Functions to perform major steps of tests:
 
 
-function automatic_mod_tests.functions.perform_point_2__populate_craftable_items_and_fluids_from_resources(researched_recipes, craftable_items, craftable_fluids, craftable_entities, minable_resource_categories, is_beginning_of_game)
+function automatic_mod_tests.functions.perform_point_2__populate_craftable_items_and_fluids_from_resources(researched_recipes, craftable_items, craftable_fluids, craftable_mining_entities, minable_resource_categories, is_beginning_of_game)
     for _,entity_type in pairs({"mining-drill", "offshore-pump"}) do
         for _,entity in pairs(data.raw[entity_type]) do
             -- only process entity if is craftable (if there is recipe for it):
             if automatic_mod_tests.functions.is_entity_craftable(researched_recipes, craftable_items, entity.name, is_beginning_of_game) then
-                if craftable_entities[entity.type] == nil then
-                    craftable_entities[entity.type] = {}
+                if craftable_mining_entities[entity.type] == nil then
+                    craftable_mining_entities[entity.type] = {}
                 end
-                craftable_entities[entity.type][entity.name] = true
+                craftable_mining_entities[entity.type][entity.name] = true
             end
         end
     end
 
-    for entity_type,entities in pairs(craftable_entities) do
+    for entity_type,entities in pairs(craftable_mining_entities) do
         for entity_name in pairs(entities) do
             if entity_type == "mining-drill" then
                 for _,resource_category in pairs(data.raw[entity_type][entity_name].resource_categories) do
@@ -173,18 +197,43 @@ function automatic_mod_tests.functions.perform_point_2__populate_craftable_items
     end
 end
 
-function automatic_mod_tests.functions.perform_point_3__populate_craftable_items_from_recipes(researched_recipes, craftable_items, craftable_fluids, difficulty)
+function automatic_mod_tests.functions.perform_point_3__populate_craftable_items_from_recipes(researched_recipes, craftable_items, craftable_fluids, craftable_crafting_entities, is_first_iteration, difficulty)
     for recipe_name,_ in pairs(researched_recipes) do
         local recipeObject = data.raw.recipe[recipe_name]
         local converted_ingredients = automatic_mod_tests.functions.convert_recipe_ingredients(recipeObject, difficulty)
 
-        -- TODO: check if there is a machine which can use this recipe?
-        -- TODO: this is hardcoded check for 'token-bio' momo recipe for "bio industries" mod:
-        local machineExistsToCraftThis = true;
-        if recipeObject.category == "bio-processor" and recipeObject.name == "momo-token-bio-N1" then
-            machineExistsToCraftThis = false
-        end
+        local machineExistsToCraftThis = function(a_recipeObject, a_craftable_crafting_entities, a_is_first_iteration)
+            if a_is_first_iteration then
+                return true
+            end
 
+            -- TODO: this is hardcoded check for 'token-bio' momo recipe for "bio industries" mod:
+            if a_recipeObject.category == "bio-processor" and a_recipeObject.name == "momo-token-bio-N1" then
+                return false
+            end
+
+            -- check if there is a machine which can use this recipe:
+
+            if a_recipeObject.category == "crafting" or a_recipeObject.category == "angels-manual-crafting" or a_recipeObject.category == nil then
+                -- can be crafted by hand
+                return true
+            end
+
+            for type_name,entities_of_type in pairs(a_craftable_crafting_entities) do
+                for entity_name,_ in pairs(entities_of_type) do
+                    if (type_name == "assembling-machine" or type_name == "furnace") and data.raw[type_name][entity_name].crafting_categories ~= nil then
+                        for _,entity_crafting_category in pairs(data.raw[type_name][entity_name].crafting_categories) do
+                            if a_recipeObject.category == entity_crafting_category then
+                                -- can be crafted by this entity
+                                return true
+                            end
+                        end
+                    end
+                end
+            end
+
+            return false
+        end
 
         local are_ingredients_craftable = function(a_converted_ingredients, a_craftable_items, a_craftable_fluids)
             for _,ingredient_item_name in pairs(a_converted_ingredients.craftable_items) do
@@ -202,14 +251,30 @@ function automatic_mod_tests.functions.perform_point_3__populate_craftable_items
             return true
         end
 
-        if machineExistsToCraftThis
+
+        if machineExistsToCraftThis(recipeObject, craftable_crafting_entities, is_first_iteration)
             and are_ingredients_craftable(converted_ingredients, craftable_items, craftable_fluids)
         then
             local converted_results = automatic_mod_tests.functions.convert_recipe_results(recipeObject, difficulty)
+
             for _,result_item_name in pairs(converted_results.craftable_items) do
                 craftable_items[result_item_name] = true
-
                 -- TODO: (performance) consider removing recipe from researched_recipes (we will not need it later?)
+
+                -- check if item will place entity:
+                local place_result = nil
+
+                if data.raw.item[result_item_name] ~= nil then
+                    place_result = data.raw.item[result_item_name].place_result
+                end
+
+                local entity_type = nil
+                if place_result ~= nil then
+                    entity_type = automatic_mod_tests.functions.get_crafting_entity_type(place_result)
+                    if entity_type ~= nil then
+                        craftable_crafting_entities[entity_type][place_result] = true
+                    end
+                end
             end
 
             for _,result_fluid_name in pairs(converted_results.craftable_fluids) do
@@ -327,8 +392,9 @@ function automatic_mod_tests.functions.log_science_packs_missing_ingredients(cra
         end
     end
 
-    -- also show why satellite is not craftable:
+    -- also show why satellite or rocket-silo is not craftable:
     all_lab_tools["satellite"] = true
+    all_lab_tools["rocket-silo"] = true
 
 
     log("-----------------------------------------------------------------------------------------------")
@@ -410,7 +476,7 @@ function automatic_mod_tests.functions.is_item_craftable(craftable_items, item_n
     return false
 end
 
--- Note: use it only once initially. Later check craftablte_items instead
+-- Note: use it only once initially. Later check craftable_items instead
 function automatic_mod_tests.functions.is_entity_craftable(researched_recipes, craftable_items, item_name, is_beginning_of_game)
     if is_beginning_of_game then
         if researched_recipes[item_name] ~= nil then
@@ -502,6 +568,23 @@ function automatic_mod_tests.functions.convert_technology_ingredients(ingredient
     end
     return results
 end
+
+
+-- inspired by function bobmods.lib.item.get_type(name) from "bobliblary" mod by Bobingabout:
+function automatic_mod_tests.functions.get_crafting_entity_type(entity_name)
+    if type(entity_name) == "string" then
+        local item_types = {
+            "assembling-machine",
+            "boiler",
+            "furnace"
+        }
+        for i, type_name in pairs(item_types) do
+            if data.raw[type_name][entity_name] ~= nil then return type_name end
+        end
+    end
+    return nil
+end
+
 
 
 function automatic_mod_tests.functions.ternary(cond, T, F)
