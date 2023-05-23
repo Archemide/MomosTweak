@@ -7,7 +7,7 @@ function momoTweak.require.Sci30Recipe()
 		
 		bobmods.lib.recipe.add_ingredient("more-science-pack-5", {ele.circuit[1], 2})
 	
-		bobmods.lib.recipe.add_ingredient("more-science-pack-6", {"angels-solder-mixture", 9})
+		bobmods.lib.recipe.add_ingredient("more-science-pack-6", {"solder-alloy", 10})
 		
 		bobmods.lib.recipe.add_ingredient("more-science-pack-7", {"plate-pack-1", 1})
 		
@@ -90,6 +90,23 @@ function momoTweak.require.Sci30Recipe()
 		data.raw.recipe["more-science-pack-30"].ingredients = items
 		bobmods.lib.recipe.add_ingredient("more-science-pack-30", {"heat-shield-tile", 5})
 		bobmods.lib.recipe.add_ingredient("more-science-pack-30", {ele.unit[4], 25})
+		end
+
+
+		-- make sure solder is craftable in early game (needed for basic electronic circuit (electronic-circuit)):
+		if data.raw.recipe["solder"] ~= nil then
+			momoIRTweak.recipe.SetResultCount("solder", 4)
+			momoIRTweak.recipe.reEnableRecipe("solder", false)
+			bobmods.lib.tech.add_recipe_unlock("electronics", "solder")
+			momoIRTweak.recipe.reEnableItem("solder")
+
+			if data.raw.recipe["solder-alloy-lead"] ~= nil then
+				data.raw.recipe["solder-alloy-lead"].category = "smelting"
+				momoIRTweak.recipe.reEnableRecipe("solder-alloy-lead", false)
+				bobmods.lib.tech.add_recipe_unlock("electronics", "solder-alloy-lead")
+				momoIRTweak.recipe.reEnableItem("solder-alloy")
+			end
+
 		end
 	end
 end

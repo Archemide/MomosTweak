@@ -1,4 +1,12 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.3.0
+Date: 2023.05.24
+  Fixed:
+	- incompatibilities which blocked player progress after Angel & Bob modules updated
+      - bug reported by user LemonZawodowiec in https://mods.factorio.com/mod/MomosTweak/discussion/646b8f398925fb04eb167e84
+	- incompatibility with mod https://mods.factorio.com/mod/flow-control-expanded-bob
+      - bug reported by user A.creature in https://mods.factorio.com/mod/MomosTweak/discussion/645fd51358d2d0380079e1ea
+---------------------------------------------------------------------------------------------------
 Version: 1.2.1
 Date: 2023.02.02
   Fixed:

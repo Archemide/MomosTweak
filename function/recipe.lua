@@ -380,8 +380,10 @@ function momoIRTweak.recipe.reEnableRecipe(recipeName, isEnabled)
 		if (recipe.normal) then
 			recipe.normal.hidden = false
 			recipe.normal.enabled = isEnabled
-			recipe.expensive.hidden = false
-			recipe.expensive.enabled = isEnabled
+			if recipe.expensive ~= nil then
+				recipe.expensive.hidden = false
+				recipe.expensive.enabled = isEnabled
+			end
 		else
 			recipe.hidden = false
 			recipe.enabled = isEnabled
