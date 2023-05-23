@@ -37,9 +37,10 @@ function momoTweak.ReworkAngelIndGroup()
 end
 
 function momoTweak.angelChemPlanTweak()
-	if data.raw.item["valve-return"] then
-		bobmods.lib.recipe.replace_ingredient("angels-chemical-plant", "pipe", "valve-return")
-	end
+	-- commented it out because it conflicts with mods["flow-control-expanded-bob"] - see: https://mods.factorio.com/mod/MomosTweak/discussion/645fd51358d2d0380079e1ea
+	--if data.raw.item["valve-return"] then
+	--	bobmods.lib.recipe.replace_ingredient("angels-chemical-plant", "pipe", "valve-return")
+	--end
 end
 
 function momoTweak.ReworkPressureTank()

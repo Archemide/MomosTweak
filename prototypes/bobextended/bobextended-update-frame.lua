@@ -19,20 +19,20 @@ function momoTweak.require.ExtendedFrameUpdate()
 	  {"lead-plate", 7},{"plate-pack-1", 4},{"stone-brick", 14}
 	}
 	newRecipe("intermediate", 30).ingredients = {
-	  {"basic-structure-components", 2},{"brass-gear-wheel", 4},{"aluminium-plate", 8},{"invar-alloy", 14}
+	  {"basic-structure-components", 2},{"brass-gear-wheel", 4},{"aluminium-plate", 9},{"invar-alloy", 15}
 	}
 	newRecipe("advanced", 60).ingredients = {
-	  {"intermediate-structure-components", 2},{"tungsten-plate", 13},{"cobalt-plate", 20},
-	  {"titanium-plate", 22},{"cobalt-steel-alloy", 10},{"advanced-plastics", 80}
+	  {"intermediate-structure-components", 2},{"cobalt-plate", 25},
+	  {"titanium-plate", 25},{"cobalt-steel-alloy", 20},{"advanced-plastics", 80}
 	}
 	newRecipe("anotherworld", 120).ingredients = {
 	  {"advanced-structure-components", 3},
 	  {"advanced-plastics", 800},
-	  {"tungsten-carbide", 300},
+	  {"tungsten-carbide", 600},
 	  {"titanium-bearing", 200},
 	  {"ceramic-bearing", 300},
 	  {"brass-alloy", 100},
-	  {"nitinol-gear-wheel", 100},
+	  {"nitinol-gear-wheel", 300},
 	  {"silver-zinc-battery", 300}
 	}
 
@@ -69,8 +69,8 @@ function momoTweak.require.ExtendedFrameUpdate()
 
 	assign("assembling-machine-2", 1, 1)
 	assign("assembling-machine-3", 2, 1)
-	assign("assembling-machine-4", 2, 2)
-	assign("assembling-machine-5", 3, 1)
+	assign("assembling-machine-4", 2, 4)
+	assign("assembling-machine-5", 2, 8)
 	assign("assembling-machine-6", 4, 1)
 
 	bobmods.lib.recipe.add_ingredient("rocket-silo", {"assembling-machine-6", 3})
@@ -189,48 +189,49 @@ function momoTweak.require.ExtendedFrameUpdate()
 
 	-- angel smelting
 	assign("blast-furnace", 1, 2)
-	assign("blast-furnace-2", 2, 3)
-	assign("blast-furnace-3", 3, 3)
-	assign("blast-furnace-4", 4, 1)
+	assign("blast-furnace-2", 1, 4)
+	assign("blast-furnace-3", 2, 3)
+	assign("blast-furnace-4", 3, 5)
 
 	assign("angels-chemical-furnace", 1, 2)
 	assign("angels-chemical-furnace-2", 2, 3)
-	assign("angels-chemical-furnace-3", 3, 3)
-	assign("angels-chemical-furnace-4", 4, 1)
+	assign("angels-chemical-furnace-3", 2, 6)
+	assign("angels-chemical-furnace-4", 4, 5)
 
 	assign("powder-mixer", 1, 2)
 	assign("powder-mixer-2", 2, 3)
-	assign("powder-mixer-3", 3, 3)
+	assign("powder-mixer-3", 2, 5)
 	assign("powder-mixer-4", 4, 1)
 
 	assign("induction-furnace", 1, 2)
-	assign("induction-furnace-2", 2, 3)
-	assign("induction-furnace-3", 3, 3)
-	assign("induction-furnace-4", 4, 1)
+	assign("induction-furnace-2", 1, 4)
+	assign("induction-furnace-3", 2, 4)
+	assign("induction-furnace-4", 3, 5)
 
 	assign("casting-machine", 1, 2)
-	assign("casting-machine-2", 2, 3)
-	assign("casting-machine-3", 3, 3)
-	assign("casting-machine-4", 4, 1)
+	assign("casting-machine-2", 1, 4)
+	assign("casting-machine-3", 2, 3)
+	assign("casting-machine-4", 3, 3)
 
 	assign("ore-processing-machine", 1, 2)
 	assign("ore-processing-machine-2", 2, 4)
-	assign("ore-processing-machine-3", 3, 4)
+	assign("ore-processing-machine-3", 2, 6)
 	assign("ore-processing-machine-4", 4, 1)
 
 	assign("pellet-press", 1, 2)
 	assign("pellet-press-2", 2, 4)
-	assign("pellet-press-3", 3, 4)
+	assign("pellet-press-3", 2, 6)
 	assign("pellet-press-4", 4, 1)
 
 	assign("sintering-oven", 1, 2)
-	assign("sintering-oven-2", 2, 3)
-	assign("sintering-oven-3", 3, 3)
-	assign("sintering-oven-4", 4, 1)
+	assign("sintering-oven-2", 1, 4)
+	assign("sintering-oven-3", 2, 4)
+	assign("sintering-oven-4", 2, 8)
+	assign("sintering-oven-5", 4, 3)
 
 	assign("strand-casting-machine", 1, 2)
 	assign("strand-casting-machine-2", 2, 3)
-	assign("strand-casting-machine-3", 3, 3)
+	assign("strand-casting-machine-3", 2, 6)
 	assign("strand-casting-machine-4", 4, 1)
 
 	--beacon
