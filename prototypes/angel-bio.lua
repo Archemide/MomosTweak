@@ -23,6 +23,11 @@ biome_tech.temp = "bio-arboretum-temperate"
 biome_tech.desert = "bio-arboretum-desert"
 biome_tech.swamp = "bio-arboretum-swamp"
 
+local biome_tech_farm = {}
+biome_tech_farm.temp = {"bio-temperate-farming-1", "bio-temperate-farm", "bio-temperate-farming-2"}
+biome_tech_farm.desert = {"bio-desert-farming-1", "bio-desert-farm", "bio-desert-farming-2"}
+biome_tech_farm.swamp = {"bio-swamp-farming-1", "bio-swamp-farm", "bio-swamp-farming-2"}
+
 local catalyst = {}
 catalyst.metal = "catalyst-metal-carrier"
 catalyst.red = "catalyst-metal-red"
@@ -74,10 +79,12 @@ end
 
 function momoTweak.angelBio.Update()
 	for i, name in pairs({"temp", "swamp", "desert"}) do
+		-- alternate recipe for gardens (easier, but more expensive):
 		momoTweak.createRecipe(aboretum_category, {{garden[name], 1}}, {
-			{seed[name], 20},
-			{tree, 25}
+			{seed[name], 200},
+			{tree, 100}
 		}, 700, aboretum_tech2)
+		-- flora paste recipe:
 		momoTweak.createRecipe("crafting", {{"bio-" .. name, 3}},{
 			{product[name][1], 8},
 			{product[name][2], 8},
@@ -85,11 +92,19 @@ function momoTweak.angelBio.Update()
 			{product[name][4], 8},
 			{product[name][5], 8}
 		}, 10, biome_tech[name] .. "-1")
+
+		-- make sure flora pastes are craftable (they are required for Chemical science):
+		for i, biome_tech_farm_name in pairs(biome_tech_farm[name]) do
+			bobmods.lib.tech.remove_prerequisite(biome_tech_farm_name, "chemical-science-pack")
+			bobmods.lib.tech.remove_science_pack(biome_tech_farm_name, "chemical-science-pack")
+		end
 	end
-	
+
+
+	-- alternate recipe for "token-bio" ("Alien plant-life sample") - easier, but more expensive:
 	momoTweak.createRecipe(procss_category, {{token, 1}}, {
-		{tree, 35},
-		{"momo-vial", 1}
+		{tree, 120},
+		{"momo-vial", 4}
 	}, 300, aboretum_tech)
 	
 	local board2 = momoTweak.ele.board[2]
@@ -148,8 +163,13 @@ function momoTweak.angelBio.Update()
 			{"bi-woodpulp", 4}
 		}, 2.5, momoTweak.get_tech_of_recipe("cellulose-fiber-raw-wood"))
 	end
-	
-	
+
+	if momoTweak.mods.msp then
+		-- make sure resin is craftable in early game:
+		bobmods.lib.tech.add_recipe_unlock("electronics", "bob-resin-wood")
+		momoTweak.replace_with_ingredient("bob-resin-wood", "wood", {"wood", 24})
+		bobmods.lib.recipe.set_energy_required("bob-resin-wood", 24)
+	end
 end
 
 function momoTweak.angelBio.FinalFixed()

@@ -28,6 +28,18 @@ Goal: create automatic test for 'no progression blocker':
     ** we should try doing whole loop for "normal" and "expensive" difficulty of recipes ( see https://wiki.factorio.com/Prototype/Recipe#Recipe_data )
     ** we should create a separate mod with such tests - this way will be easier to reuse it later (just add mod in Factorio and observe log etc).
         ^ Add dependencies for other mods to it - so this "test mod" will be loaded after all other mods.
+
+    ** TODO: Test also scenarios with other mods combinations:
+        - mods listed in "momoTweak.mods" variable (see data.lua) - especially momoTweak.mods.angelBio ("angelsbioprocessing")
+        - SeaBlock
+        ** ^ Is it possible to automatize such test scenarios with other mod combinations? Or always someone needs to restart the game manually with specific sets of mods per scenario?
+
+    ** Balance:
+        - TODO: add "anotherworld" modules to highest levels of machines (but dont break progress). Then iterate over those machines and add also +1 or +2 module slots ( https://wiki.factorio.com/Prototype/CraftingMachine#module_specification ) and maybe increase speed. It should be done because that ingredient is expensive, and there should be more reward for investing in such machine.
+
+
+    ** Incompatibilities:
+        - TODO: see momoTweak.mods.angelsindustries in data-final-fixes.lua notes
 --]]
 
 function automatic_mod_tests.functions.executeTests(difficulty)
@@ -43,9 +55,6 @@ function automatic_mod_tests.functions.executeTests(difficulty)
     craftable_crafting_entities['boiler'] = {}
     craftable_crafting_entities['furnace'] = {}
 
-    -- TODO: test also with: MSP 30 mod, Sea Block
-
-    -- TODO: add "anotherworld" modules to highest levels of machines (but dont break progress). Then iterate over those machines and add also +1 or +2 module slots ( https://wiki.factorio.com/Prototype/CraftingMachine#module_specification ) and maybe increase speed. It should be done because that ingredient is expensive, and there should be more reward for investing in such machine.
 
     local minable_resource_categories = {}
 
@@ -99,7 +108,7 @@ function automatic_mod_tests.functions.executeTests(difficulty)
     end
 
 
-    while test_iteration_number < 100 do
+    while test_iteration_number < 120 do
         test_iteration_number = test_iteration_number + 1
 
 
@@ -205,11 +214,6 @@ function automatic_mod_tests.functions.perform_point_3__populate_craftable_items
         local machineExistsToCraftThis = function(a_recipeObject, a_craftable_crafting_entities, a_is_first_iteration)
             if a_is_first_iteration then
                 return true
-            end
-
-            -- TODO: this is hardcoded check for 'token-bio' momo recipe for "bio industries" mod:
-            if a_recipeObject.category == "bio-processor" and a_recipeObject.name == "momo-token-bio-N1" then
-                return false
             end
 
             -- check if there is a machine which can use this recipe:
