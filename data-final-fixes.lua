@@ -139,7 +139,7 @@ if momoTweak.mods.angelsindustries then
 			end
 		end
 	end
-	-- make sure that with mod MSP30 we are not blocke don that tech:
+	-- make sure that with mod MSP30 we are not blocked on that tech:
 	bobmods.lib.tech.remove_science_pack("advanced-electronics", "more-science-pack-9")
 	bobmods.lib.tech.remove_science_pack("advanced-electronics", "more-science-pack-10")
 
@@ -153,6 +153,8 @@ if momoTweak.mods.angelsindustries then
 	bobmods.lib.recipe.add_ingredient("lithium-ion-battery", {"battery-2", 1})
 	momoTweak.replace_with_ingredient("momo-py-superconductor-N4", "battery-6", {"battery-4", 4})
 	momoTweak.replace_with_ingredient("utility-science-pack", "battery-3", {"silver-zinc-battery", 4})
+	-- fix battery in this because otherwise battery-6 will not be craftable? :
+	momoTweak.replace_with_ingredient("anotherworld-structure-components", "battery-6", {"battery-5", 300})
 
 	-- Restore Bobs/Momos electronic components in those:
 	for _,item_data in pairs(angelsindustries_affected_electronics) do
@@ -174,6 +176,15 @@ if momoTweak.mods.angelsindustries then
 	bobmods.lib.recipe.remove_ingredient("stone-wall", "block-construction-2")
 	momoTweak.replace_with_ingredient("electric-chemical-mixing-furnace", "construction-frame-5", "construction-frame-4")
 	momoIRTweak.recipe.reEnableRecipe("boiler", true)
+
+	-- make sure those machines are craftable in early game:
+	if data.raw.recipe["angels-chemical-plant"] ~= nil then
+		bobmods.lib.recipe.remove_ingredient("angels-chemical-plant", "block-production-1")
+	end
+	if data.raw.recipe["liquifier"] ~= nil then
+		bobmods.lib.recipe.remove_ingredient("liquifier", "block-production-1")
+	end
+
 end
 
 

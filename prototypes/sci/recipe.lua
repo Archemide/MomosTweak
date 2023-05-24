@@ -107,12 +107,16 @@ function momoTweak.require.SciRecipe()
 		{"lithium-ion-battery", 3}
 	}, 12, tech_sci_pro)
 
+	local cpy_aditional_ingredient = "processing-unit"
+	if data.raw.item["robot-brain-logistic"] ~= nil then
+		cpy_aditional_ingredient = "robot-brain-logistic"
+	end
 	momoTweak.createRecipe(sci_cat, {{"cpy", 4}}, {
 	  
 	  {"insulated-cable", 6},
 	  {"solder", 6},
 	  {ele.board[2], 4},
-	  {"robot-brain-logistic", 2},
+	  {cpy_aditional_ingredient, 2},
 	  {"zinc-plate", 12}
 	  
 	}, 10, tech_sci_pro)

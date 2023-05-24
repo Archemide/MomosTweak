@@ -105,6 +105,12 @@ function momoTweak.require.Sci30Recipe()
 				momoIRTweak.recipe.reEnableRecipe("solder-alloy-lead", false)
 				bobmods.lib.tech.add_recipe_unlock("electronics", "solder-alloy-lead")
 				momoIRTweak.recipe.reEnableItem("solder-alloy")
+
+				-- make sure it takes less resin per craft (as resin is expensive in early game):
+				momoTweak.replace_with_ingredient("solder", "solder-alloy", {"solder-alloy", 32})
+				momoTweak.replace_with_ingredient("solder", "resin", {"resin", 1})
+				momoIRTweak.recipe.SetResultCount("solder", 16)
+				bobmods.lib.recipe.set_energy_required("solder", 16)
 			end
 
 		end
