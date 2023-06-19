@@ -185,6 +185,42 @@ if momoTweak.mods.angelsindustries then
 		bobmods.lib.recipe.remove_ingredient("liquifier", "block-production-1")
 	end
 
+
+	-- make sure those techs are craftable in early game - otherwise it will be impossible to craft "electronic-circuit":
+	bobmods.lib.tech.replace_science_pack('electronics', 'datacore-processing-1', 'datacore-basic')
+	bobmods.lib.tech.replace_science_pack('electronics', 'angels-science-pack-red', 'angels-science-pack-grey')
+
+	bobmods.lib.tech.replace_science_pack('angels-coal-processing', 'datacore-processing-1', 'datacore-basic')
+	bobmods.lib.tech.replace_science_pack('angels-coal-processing', 'angels-science-pack-red', 'angels-science-pack-grey')
+
+	bobmods.lib.tech.replace_science_pack('basic-chemistry', 'datacore-processing-1', 'datacore-basic')
+	bobmods.lib.tech.replace_science_pack('basic-chemistry', 'angels-science-pack-red', 'angels-science-pack-grey')
+
+	bobmods.lib.tech.replace_science_pack('automation', 'datacore-processing-1', 'datacore-basic')
+	bobmods.lib.tech.replace_science_pack('automation', 'angels-science-pack-red', 'angels-science-pack-grey')
+
+	bobmods.lib.tech.replace_science_pack('tech-specialised-labs-basic-processing-1', 'datacore-processing-1', 'datacore-basic')
+	bobmods.lib.tech.replace_science_pack('tech-specialised-labs-basic-processing-1', 'angels-science-pack-red', 'angels-science-pack-grey')
+
+	bobmods.lib.tech.replace_science_pack('tech-specialised-labs-basic-exploration-1', 'datacore-processing-1', 'datacore-basic')
+	bobmods.lib.tech.replace_science_pack('tech-specialised-labs-basic-exploration-1', 'angels-science-pack-red', 'angels-science-pack-grey')
+
+
+	-- Make sure that "processing-unit" is craftable:
+	bobmods.lib.tech.replace_prerequisite('advanced-electronics-2', 'tech-specialised-labs-advanced-processing-1', 'tech-blue-circuit')
+	bobmods.lib.tech.replace_prerequisite('tech-blue-packs', 'tech-blue-circuit', 'advanced-electronics-2')
+	for _,tech in pairs(data.raw.technology) do
+		bobmods.lib.tech.replace_prerequisite(tech, 'advanced-electronics-2', 'tech-specialised-labs-advanced-processing-1')
+	end
+
+	bobmods.lib.tech.replace_science_pack('advanced-electronics-2', 'datacore-processing-2', 'datacore-processing-1')
+	bobmods.lib.tech.replace_science_pack('advanced-electronics-2', 'angels-science-pack-blue', 'angels-science-pack-orange')
+
+	-- Make sure that Lithium is craftable (which is needed for "processing-unit"):
+	bobmods.lib.tech.replace_prerequisite('lithium-processing', 'chlorine-processing-4', 'advanced-electronics-2')
+	bobmods.lib.tech.replace_science_pack('lithium-processing', 'datacore-processing-2', 'datacore-processing-1')
+	bobmods.lib.tech.replace_science_pack('lithium-processing', 'angels-science-pack-blue', 'angels-science-pack-orange')
+
 end
 
 

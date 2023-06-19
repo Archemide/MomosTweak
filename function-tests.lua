@@ -54,6 +54,7 @@ function automatic_mod_tests.functions.executeTests(difficulty)
     craftable_crafting_entities['assembling-machine'] = {}
     craftable_crafting_entities['boiler'] = {}
     craftable_crafting_entities['furnace'] = {}
+    local character_crafting_categories = data.raw.character['character'].crafting_categories
 
 
     local minable_resource_categories = {}
@@ -116,7 +117,7 @@ function automatic_mod_tests.functions.executeTests(difficulty)
         automatic_mod_tests.functions.perform_point_2__populate_craftable_items_and_fluids_from_resources(researched_recipes, craftable_items, craftable_fluids, craftable_mining_entities, minable_resource_categories, test_iteration_number > 1)
 
         -- Note: This is point 3 in our "automatic test plan"
-        automatic_mod_tests.functions.perform_point_3__populate_craftable_items_from_recipes(researched_recipes, craftable_items, craftable_fluids, craftable_crafting_entities, test_iteration_number <= 2, difficulty)
+        automatic_mod_tests.functions.perform_point_3__populate_craftable_items_from_recipes(researched_recipes, craftable_items, craftable_fluids, craftable_crafting_entities, character_crafting_categories, test_iteration_number <= 2, difficulty)
 
         -- Note: This is point 4 in our "automatic test plan"
         automatic_mod_tests.functions.perform_point_4__research_technologies(researched_technologies, researched_recipes, craftable_items, difficulty)
@@ -206,12 +207,12 @@ function automatic_mod_tests.functions.perform_point_2__populate_craftable_items
     end
 end
 
-function automatic_mod_tests.functions.perform_point_3__populate_craftable_items_from_recipes(researched_recipes, craftable_items, craftable_fluids, craftable_crafting_entities, is_first_iteration, difficulty)
+function automatic_mod_tests.functions.perform_point_3__populate_craftable_items_from_recipes(researched_recipes, craftable_items, craftable_fluids, craftable_crafting_entities, character_crafting_categories, is_first_iteration, difficulty)
     for recipe_name,_ in pairs(researched_recipes) do
         local recipeObject = data.raw.recipe[recipe_name]
         local converted_ingredients = automatic_mod_tests.functions.convert_recipe_ingredients(recipeObject, difficulty)
 
-        local machineExistsToCraftThis = function(a_recipeObject, a_craftable_crafting_entities, a_is_first_iteration)
+        local machineExistsToCraftThis = function(a_recipeObject, a_craftable_crafting_entities, a_character_crafting_categories, a_is_first_iteration)
             if a_is_first_iteration then
                 return true
             end
@@ -221,6 +222,12 @@ function automatic_mod_tests.functions.perform_point_3__populate_craftable_items
             if a_recipeObject.category == "crafting" or a_recipeObject.category == "angels-manual-crafting" or a_recipeObject.category == nil then
                 -- can be crafted by hand
                 return true
+            end
+            for _, category in pairs(a_character_crafting_categories) do
+                if a_recipeObject.category == category then
+                    -- can be crafted by hand
+                    return true
+                end
             end
 
             for type_name,entities_of_type in pairs(a_craftable_crafting_entities) do
@@ -256,7 +263,7 @@ function automatic_mod_tests.functions.perform_point_3__populate_craftable_items
         end
 
 
-        if machineExistsToCraftThis(recipeObject, craftable_crafting_entities, is_first_iteration)
+        if machineExistsToCraftThis(recipeObject, craftable_crafting_entities, character_crafting_categories, is_first_iteration)
             and are_ingredients_craftable(converted_ingredients, craftable_items, craftable_fluids)
         then
             local converted_results = automatic_mod_tests.functions.convert_recipe_results(recipeObject, difficulty)
